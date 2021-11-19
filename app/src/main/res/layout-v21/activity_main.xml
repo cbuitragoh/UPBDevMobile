@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:backgroundTint="@color/white"
     android:textAlignment="center"
     tools:context=".MainActivity">
 
@@ -13,8 +14,9 @@
         android:layout_width="0dp"
         android:layout_height="412dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="25dp"
+        android:background="#FFFFFF"
         android:contentDescription="@string/splash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

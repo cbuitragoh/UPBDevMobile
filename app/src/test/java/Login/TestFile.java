@@ -1,4 +1,4 @@
-//package com.upb.nodesperdicio;
+package Login;//package com.upb.nodesperdicio;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,8 +8,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
 
-//import com.upb.nodesperdicio.controlador.ControladorLogin;
-//import com.upb.nodesperdicio.interfaz.LoginIterface;
+import Login.ControladorLogin;
+import Login.LoginIterface;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestFile {

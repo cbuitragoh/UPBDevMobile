@@ -8,11 +8,18 @@
         <entry key="..\:/Users/Camilo/AndroidStudioProjects/UPBDevMobile/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Carlos_A/AndroidStudioProjects/UPBDevMobile/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Carlos_A/AndroidStudioProjects/UPBDevMobile/app/src/main/res/layout/activity_main.xml" value="0.1272644927536232" />
+        <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/btn_login_redondo.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/button_rounded.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/facebook.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/facebook_btn.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/google.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/google_btn.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/ic_facebook_dos.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/layout/activity_login.xml" value="0.5" />
+        <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/login_with_facebook_btn.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/drawable/login_with_google_btn.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/layout/activity_login.xml" value="0.603042876901798" />
         <entry key="..\:/Users/fredy/Documents/Android Studio/UPBDevMobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21614583333333334" />
       </map>
     </option>

@@ -1,4 +1,4 @@
-package Login;//package com.upb.nodesperdicio;
+package Login;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,14 +15,14 @@ import Login.LoginIterface;
 public class TestFile {
 
     @Mock
-    ControladorLogin controladorLogin;
+    Login controladorLogin;
 
     @Mock
     LoginIterface.View view;
 
     @Before
     public void setUp() {
-        controladorLogin = new ControladorLogin(view);
+        controladorLogin = new Login(view);
     }
 
     @Test

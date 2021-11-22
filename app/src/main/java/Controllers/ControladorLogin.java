@@ -1,6 +1,8 @@
-package Login;//package com.upb.nodesperdicio.controlador;
+package Controllers;//package com.upb.nodesperdicio.controlador;
 
 //import com.upb.nodesperdicio.interfaz.LoginIterface;
+
+import Interfaces.LoginIterface;
 
 public class ControladorLogin implements LoginIterface.Controlador {
 

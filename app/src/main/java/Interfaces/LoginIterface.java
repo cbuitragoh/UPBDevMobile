@@ -1,4 +1,4 @@
-package Login;//package com.upb.nodesperdicio.interfaz;
+package Interfaces;//package com.upb.nodesperdicio.interfaz;
 
 public interface LoginIterface {
 

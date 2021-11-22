@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeInfo">
+
+    <FrameLayout
+        android:id="@+id/frameInfo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/image_info_first"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/txtIniciarSesion"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_sesion"
+            android:fontFamily="@font/mate_sc"
+            android:hint="@string/app_name"
+            android:onClick="redirectionToLogin"
+            android:text="@string/login"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FF5722"
+            android:translationX="230dp"
+            android:translationY="610dp" />
+
+        <Button
+            android:id="@+id/txtRegistrarse"
+            android:layout_width="151dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_registrarse"
+            android:text="@string/registrarse"
+            android:textColor="#FFFFFF"
+            android:translationX="30dp"
+            android:translationY="610dp" />
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

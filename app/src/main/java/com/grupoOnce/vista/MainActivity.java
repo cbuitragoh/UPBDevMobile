@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         }, 5000);
     }
     public void destroyMain() {
-        Intent newView = new Intent(this, HomeInfo.class);
+        Intent newView = new Intent(this, login.class);
         startActivity(newView);
         finish();
     }

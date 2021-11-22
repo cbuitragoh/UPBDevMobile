@@ -25,8 +25,11 @@
             android:layout_width="149dp"
             android:layout_height="wrap_content"
             android:background="@drawable/boton_sesion"
+            android:focusable="auto"
+            android:focusableInTouchMode="true"
             android:fontFamily="@font/mate_sc"
             android:hint="@string/app_name"
+            android:keepScreenOn="true"
             android:onClick="redirectionToLogin"
             android:text="@string/login"
             android:textColor="#FDFBF8F8"
@@ -34,6 +37,7 @@
             android:textStyle="bold"
             android:translationX="230dp"
             android:translationY="610dp"
+            android:visibility="visible"
             tools:ignore="TextContrastCheck" />
 
         <Button
@@ -41,11 +45,15 @@
             android:layout_width="151dp"
             android:layout_height="wrap_content"
             android:background="@drawable/boton_registrarse"
+            android:focusable="auto"
+            android:focusableInTouchMode="true"
+            android:keepScreenOn="true"
             android:text="@string/registrarse"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:translationX="30dp"
             android:translationY="610dp"
+            android:visibility="visible"
             tools:ignore="TextContrastCheck" />
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

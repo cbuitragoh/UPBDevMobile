@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import com.grupoOnce.vista.databinding.ActivityHomeInfoBinding;
 
 public class HomeInfo extends AppCompatActivity {
+
+    ActivityHomeInfoBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +22,9 @@ public class HomeInfo extends AppCompatActivity {
 
     }
 
-
     public void redirectionToLogin(View view) {
         Intent newView = new Intent(this, login.class);
         startActivity(newView);
-        finish();
     }
 }
 

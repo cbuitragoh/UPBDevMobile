@@ -14,7 +14,7 @@
         android:src="@drawable/logo" />
 
     <EditText
-        android:id="@+id/userField"
+        android:id="@+id/editUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logoLogin"
@@ -28,10 +28,10 @@
         android:textColorHint="#B3BB21" />
 
     <EditText
-        android:id="@+id/passwordField"
+        android:id="@+id/editPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/userField"
+        android:layout_below="@+id/editUsuario"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
@@ -45,7 +45,7 @@
         android:id="@+id/textDivisor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordField"
+        android:layout_below="@+id/editPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:fontFamily="cursive"

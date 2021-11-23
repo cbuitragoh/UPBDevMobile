@@ -21,8 +21,6 @@ public class login extends AppCompatActivity implements LoginIterface.View {
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
-        Controlador.validarLogin(binding.editUsuario.getText().toString(),"usuario");
-        Controlador.validarLogin(binding.editPassword.getText().toString(),"password");
         Registrar();
 
     }
@@ -31,16 +29,20 @@ public class login extends AppCompatActivity implements LoginIterface.View {
     @Override
     public void validarResultado(String editText, String mensaje) {
         if(editText.equals("usuario")){
+
             binding.editUsuario.setFocusable(true);
             binding.editUsuario.setFocusableInTouchMode(true);
             binding.editUsuario.requestFocus();
             binding.editUsuario.setError(mensaje);
 
+
         }else if(editText.equals("password")){
+
             binding.editPassword.setFocusable(true);
             binding.editPassword.setFocusableInTouchMode(true);
             binding.editPassword.requestFocus();
             binding.editPassword.setError(mensaje);
+
 
         }
     }
@@ -59,7 +61,19 @@ public class login extends AppCompatActivity implements LoginIterface.View {
         binding.btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Controlador.usuarioPermitido(binding.editUsuario.getText().toString(),binding.editPassword.getText().toString());
+                binding.editUsuario.setError(null);
+                binding.editUsuario.clearFocus();
+                binding.editPassword.setError(null);
+                binding.editPassword.clearFocus();
+
+                Boolean p;
+                Boolean q;
+                p = Controlador.validarLogin(binding.editUsuario.getText().toString(), "usuario");
+                q = Controlador.validarLogin(binding.editPassword.getText().toString(),"password");
+
+                if(p & q) {
+                    Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString());
+                }
             }
         });
     }

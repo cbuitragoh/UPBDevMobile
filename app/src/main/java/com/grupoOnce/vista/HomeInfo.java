@@ -26,6 +26,11 @@ public class HomeInfo extends AppCompatActivity {
         Intent newView = new Intent(this, login.class);
         startActivity(newView);
     }
+
+    public void redirectionRegistro(View view) {
+        Intent newView = new Intent(this, Registro.class);
+        startActivity(newView);
+    }
 }
 
 

@@ -1,38 +1,19 @@
 package Models;
 
-public class Usuario {
+public class UsuarioDto {
 
-    private Integer id;
     private String nombres;
     private String apellidos;
     private String sexo;
     private String direccion;
     private String correo;
-    private String celular;
+    private String foto;
     private String ciudad;
+    private String celular;
     private String usuario;
-    private String contrasena;
+    private String password;
 
-    public Usuario(Integer id, String nombres, String apellidos, String sexo, String dirección, String correo, String celular, String ciudad, String usuario, String contraseña) {
-        this.id = id;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.sexo = sexo;
-        this.direccion = dirección;
-        this.correo = correo;
-        this.celular = celular;
-        this.ciudad = ciudad;
-        this.usuario = usuario;
-        this.contrasena = contraseña;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private static UsuarioDto instance = new UsuarioDto();
 
     public String getNombres() {
         return nombres;
@@ -74,12 +55,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public String getCiudad() {
@@ -90,6 +71,14 @@ public class Usuario {
         this.ciudad = ciudad;
     }
 
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
     public String getUsuario() {
         return usuario;
     }
@@ -98,11 +87,19 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public static UsuarioDto getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(UsuarioDto instance) {
+        UsuarioDto.instance = instance;
     }
 }

@@ -1,6 +1,7 @@
 package Interfaces;
 
-public interface RegistroInterface {
+
+public interface FormularioInterfaz {
 
     interface View {
 

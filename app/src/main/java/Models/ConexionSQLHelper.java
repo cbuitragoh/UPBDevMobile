@@ -7,17 +7,28 @@ import android.support.annotation.Nullable;
 
 public class ConexionSQLHelper extends SQLiteOpenHelper {
 
-    final String CREAR_TABLA_USUARIO = "CREATE TABLE usuarios (id INTEGER, nombres TEXT, apellidos TEXT," +
-            "sexo TEXT, direccion TEXT, correo TEXT, celular TEXT, ciudad TEXT," +
-            "usuario TEXT, contrasena TEXT)";
+   private static final int DATA_VERSION = 1;
+   private static final String DATABASE_NOMBRE = "FoodForAll.db";
+   public static final String TABLA_USUARIOS = "usuarios";
 
-    public ConexionSQLHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public ConexionSQLHelper(@Nullable Context context) {
+        super(context, DATABASE_NOMBRE, null, DATA_VERSION);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREAR_TABLA_USUARIO);
+        db.execSQL("CREATE TABLE " + TABLA_USUARIOS + "(" +
+                " idUsuario INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " nombres TEXT NOT NULL, " +
+                " apellidos TEXT NOT NULL," +
+                " sexo TEXT NOT NULL," +
+                " direccion TEXT NOT NULL," +
+                " correo TEXT NOT NULL," +
+                " celular TEXT NOT NULL," +
+                " ciudad TEXT NOT NULL," +
+                "usuario TEXT NOT NULL," +
+                " password TEXT NOT NULL)" );
     }
 
     @Override

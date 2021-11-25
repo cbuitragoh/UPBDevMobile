@@ -27,13 +27,13 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
                 " correo TEXT NOT NULL," +
                 " celular TEXT NOT NULL," +
                 " ciudad TEXT NOT NULL," +
-                "usuario TEXT NOT NULL," +
+                " usuario TEXT NOT NULL," +
                 " password TEXT NOT NULL)" );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS usuarios");
+        db.execSQL("DROP TABLE "+ TABLA_USUARIOS);
         onCreate(db);
     }
 }

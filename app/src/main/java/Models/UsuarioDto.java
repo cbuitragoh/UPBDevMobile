@@ -2,8 +2,8 @@ package Models;
 
 public class UsuarioDto {
 
-    private String nombres;
-    private String apellidos;
+    private String nombre;
+    private String apellido;
     private String sexo;
     private String direccion;
     private String correo;
@@ -15,20 +15,20 @@ public class UsuarioDto {
 
     private static UsuarioDto instance = new UsuarioDto();
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getSexo() {

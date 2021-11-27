@@ -1,6 +1,7 @@
 package Interfaces;
 
 
+import Models.ConexionSQLHelper;
 import Models.FormularioDTO;
 
 public interface FormularioInterfaz {
@@ -12,7 +13,7 @@ public interface FormularioInterfaz {
 
     interface Controlador {
         Boolean validarFormulario(FormularioDTO formularioDTO);
-        Boolean usuarioGuardarUsuario(FormularioDTO formularioDTO);
+        Boolean usuarioGuardarUsuario(FormularioDTO formularioDTO, ConexionSQLHelper dbHelper);
     }
 
     interface Modelo {

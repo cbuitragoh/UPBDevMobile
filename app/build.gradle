@@ -18,7 +18,6 @@ android {
 
     viewBinding {
          enabled = true
-
     }
 
     buildTypes {

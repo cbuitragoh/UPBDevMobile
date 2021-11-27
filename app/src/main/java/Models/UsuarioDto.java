@@ -1,5 +1,9 @@
 package Models;
 
+import android.content.ContentValues;
+
+import Contracts.UsersContracts;
+
 public class UsuarioDto {
 
     private String nombre;
@@ -14,6 +18,20 @@ public class UsuarioDto {
     private String password;
 
     private static UsuarioDto instance = new UsuarioDto();
+
+    public ContentValues toContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(UsersContracts.UsersEntry.NAME, nombre);
+        values.put(UsersContracts.UsersEntry.LASTNAME, apellido);
+        values.put(UsersContracts.UsersEntry.GENDER, sexo);
+        values.put(UsersContracts.UsersEntry.ADDRESS, direccion);
+        values.put(UsersContracts.UsersEntry.EMAIL, correo);
+        values.put(UsersContracts.UsersEntry.CELLPHONE, celular);
+        values.put(UsersContracts.UsersEntry.CITY, ciudad);
+        values.put(UsersContracts.UsersEntry.USER, usuario);
+        values.put(UsersContracts.UsersEntry.PASSWORD, password);
+        return values;
+    }
 
     public String getNombre() {
         return nombre;

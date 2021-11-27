@@ -1,6 +1,7 @@
 package Controllers;
 
 import Interfaces.FormularioInterfaz;
+import Models.ConexionSQLHelper;
 import Models.FormularioDTO;
 import Models.UsuarioDto;
 
@@ -11,6 +12,7 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
     public ControladorFormulario(FormularioInterfaz.View view) {
         this.view = view;
     }
+
 
     @Override
     public Boolean validarFormulario(FormularioDTO formularioDTO) {
@@ -53,7 +55,7 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
     }
 
     @Override
-    public Boolean usuarioGuardarUsuario(FormularioDTO formularioDTO) {
+    public Boolean usuarioGuardarUsuario(FormularioDTO formularioDTO, ConexionSQLHelper dbHelper) {
         if (formularioDTO != null) {
             UsuarioDto usuario = UsuarioDto.getInstance();
             usuario.setNombre(formularioDTO.getEditNombres());
@@ -63,14 +65,24 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
             usuario.setCorreo(formularioDTO.getEditCorreo());
             usuario.setCiudad(formularioDTO.getEditCiudad());
             usuario.setCelular(formularioDTO.getEditCelular());
-            usuario.setUsuario(formularioDTO.getEditUsuario());
+            usuario.setUsuario(formularioDTO.getEditCorreo());
             usuario.setPassword(formularioDTO.getEditPassword());
-            view.respuestaGuardadoUsuario(true);
-            return true;
+            return saveUser(dbHelper, usuario);
         } else {
             view.respuestaGuardadoUsuario(false);
             return false;
         }
     }
+
+    public boolean saveUser(ConexionSQLHelper db, UsuarioDto usuario) {
+
+        long userSaved = db.saveUser(usuario);
+
+        view.respuestaGuardadoUsuario(userSaved > 0);
+        return userSaved > 0;
+
+    }
+
+
 
 }

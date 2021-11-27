@@ -5,6 +5,18 @@
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryDark">@color/purple_700</item>
         <item name="colorAccent">@color/teal_200</item>
+
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="vistaRegistro">
+        <item name="android:textColorHint">@color/Bahia</item>
+        <item name="fontFamily">@font/mate_sc</item>
+        <item name="android:paddingTop">@dimen/paddingTop</item>
+    </style>
+
+    <style name="FotoBtts">
+        <item name="android:fontFamily">@font/mate_sc</item>
+        <item name="android:background">#EA9637</item>
     </style>
 </resources>

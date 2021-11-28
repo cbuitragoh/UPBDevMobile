@@ -32,7 +32,7 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
             view.validarResultadoFormulario("correo", "Los campos no pueden estar vacíos");
             return false;
         } else if (!formularioDTO.getEditCorreo().trim().matches("[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+")) {
-            view.validarResultadoFormulario("correo", "El correo debe ser valido");
+            view.validarResultadoFormulario("correo_valido", "El correo debe ser valido");
             return false;
         } else if (formularioDTO.getEditCiudad().trim().isEmpty()) {
             view.validarResultadoFormulario("ciudad", "Los campos no pueden estar vacíos");

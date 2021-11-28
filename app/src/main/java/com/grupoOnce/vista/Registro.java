@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.content.Context;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -70,7 +71,83 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     @Override
     public void validarResultadoFormulario(String editText, String mensaje) {
-
+        if(editText.equals("nombre")){
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("apellido")){
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("sexo")) {
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("direccion")) {
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("correo")) {
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("correo_valido")) {
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("ciudad")) {
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("celular")) {
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("usuario")) {
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("password")) {
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if (editText.equals("password_length")) {
+            Context context = getApplicationContext();
+            CharSequence text = mensaje;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
 
     @Override

@@ -24,7 +24,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
-        Registrar();
+        Loguear();
 
     }
 
@@ -60,7 +60,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
 
     }
 
-    public void Registrar(){
+    public void Loguear(){
         binding.btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

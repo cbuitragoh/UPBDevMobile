@@ -1,10 +1,8 @@
 package Models;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 
 import Contracts.UsersContracts;
 import Contracts.UsersContracts.UsersEntry;
@@ -15,7 +13,7 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
    private static final String DATABASE_NOMBRE = "FoodForAll.db";
    public static final String TABLA_USUARIOS = "usuarios";
 
-    public ConexionSQLHelper(@Nullable Context context) {
+    public ConexionSQLHelper(Context context) {
         super(context, DATABASE_NOMBRE, null, DATA_VERSION);
     }
 

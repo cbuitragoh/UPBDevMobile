@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:isScrollContainer="true"
     tools:context=".Registro">
 
     <LinearLayout
@@ -21,13 +22,13 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/tomarFoto"
+                android:id="@+id/editFoto"
                 android:layout_width="156dp"
                 android:layout_height="165dp"
                 android:layout_centerHorizontal="true" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/btnTomarFoto"
                 style="@style/FotoBtts"
                 android:layout_width="192dp"
                 android:layout_height="wrap_content"
@@ -55,7 +56,7 @@
             android:paddingEnd="30dp">
 
             <EditText
-                android:id="@+id/editTextTextPersonName6"
+                android:id="@+id/editNombres"
                 style="@style/vistaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,7 +65,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName5"
+                android:id="@+id/editApellidos"
                 style="@style/vistaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,12 +74,14 @@
                 android:inputType="textPersonName" />
 
             <Spinner
-                android:id="@+id/spinnerSexo"
+                android:id="@+id/spSexo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/editDireccion"
                 style="@style/vistaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,7 +90,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/editCiudad"
                 style="@style/vistaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +99,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editTextPhone"
+                android:id="@+id/editCelular"
                 style="@style/vistaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,7 +108,7 @@
                 android:inputType="phone" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/editCorreo"
                 style="@style/vistaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,13 +117,24 @@
                 android:inputType="textEmailAddress" />
 
             <EditText
+                android:id="@+id/editUsuario"
+                style="@style/vistaRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Usuario"
+                android:inputType="textPersonName" />
+
+            <EditText
                 android:id="@+id/editTextTextPassword"
                 style="@style/vistaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Contraseña"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -129,7 +143,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnRegistrar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#B3BB21"
@@ -138,10 +152,11 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="TextContrastCheck"
                 tools:layout_editor_absoluteX="0dp" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

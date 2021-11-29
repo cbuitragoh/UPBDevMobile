@@ -57,6 +57,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         registroXML();
         darClic();
         agregarValores();
+        Registrar();
         tomarFoto(this);
     }
 

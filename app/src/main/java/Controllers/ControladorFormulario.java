@@ -31,7 +31,7 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
             view.validarResultadoFormulario("sexo", "Seleccione el sexo");
             return false;
         } else if (!formularioDTO.getEditCorreo().trim().matches("[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+")) {
-            view.validarResultadoFormulario("correo", "El correo debe ser valido");
+            view.validarResultadoFormulario("correo_valido", "El correo debe ser valido");
             return false;
         }  else if (formularioDTO.getEditPassword().trim().length() < 6) {
             view.validarResultadoFormulario("password_length", "La contraseña debe tener mínimo 6 caracteres");
@@ -45,7 +45,6 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
     public Boolean usuarioGuardarUsuario(FormularioDTO formularioDTO, ConexionSQLHelper dbHelper) {
         if (formularioDTO != null) {
             UsuarioDto usuario = UsuarioDto.getInstance();
-            usuario.setNombre(formularioDTO.getEditNombres());
             usuario.setApellido(formularioDTO.getEditApellidos());
             usuario.setSexo(formularioDTO.getSpSexo());
             usuario.setDireccion(formularioDTO.getEditDireccion());

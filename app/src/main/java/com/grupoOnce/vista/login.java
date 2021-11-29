@@ -1,9 +1,12 @@
 package com.grupoOnce.vista;
 
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.grupoOnce.vista.databinding.ActivityLoginBinding;
 
 import Interfaces.LoginIterface;
@@ -21,7 +24,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
-        Registrar();
+        Loguear();
 
     }
 
@@ -57,7 +60,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
 
     }
 
-    public void Registrar(){
+    public void Loguear(){
         binding.btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -36,10 +36,10 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     private ActivityRegistroBinding binding;
     private final ControladorFormulario Controlador = new ControladorFormulario(this);
-    private final ConexionSQLHelper dbHelper = new ConexionSQLHelper(getApplicationContext());
+    //private final ConexionSQLHelper dbHelper = new ConexionSQLHelper(getApplicationContext());
 
     private Spinner seleccionarSexo;
-    private ArrayList<String> listaSexo = new ArrayList<String>();
+    private final ArrayList<String> listaSexo = new ArrayList<String>();
 
     private ImageView selectedImage;
     private Button cameraBt;
@@ -52,17 +52,13 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         binding = ActivityRegistroBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        //setContentView(R.layout.activity_registro);
         getSupportActionBar().hide();
 
-        selectedImage = binding.editFoto;
-        cameraBt = binding.btnTomarFoto;
-
-
         registroXML();
-        agregarValores();
         darClic();
+        agregarValores();
         tomarFoto(this);
+
 
 
     }
@@ -163,18 +159,22 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     @Override
     public void tomarFoto(Activity activity) {
+
+        cameraBt = binding.btnTomarFoto;
+
         cameraBt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Toast.makeText(activity,"Se activará la cámara", Toast.LENGTH_SHORT).show();
                 askCameraPermission();
+                openCamera();
             }
         });
     }
 
     /* ------------- Botón de registro ------------*/
 
-    public void Registrar() {
+    /*public void Registrar() {
         binding.btnRegistrar.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -188,7 +188,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
                 }
             }
         });
-    }
+    }*/
 
     /* -------------- Implementación del Spinner --------------*/
 
@@ -247,13 +247,15 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     private void openCamera(){
         Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(camera, CAMERA_REQUEST_CODE);
+        //startActivityForResult(camera, CAMERA_REQUEST_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        selectedImage = binding.editFoto;
         if (requestCode == CAMERA_REQUEST_CODE) {
+            assert data != null;
             Bitmap image = (Bitmap) data.getExtras().get("data");
             selectedImage.setImageBitmap(image);
         }

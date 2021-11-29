@@ -23,32 +23,26 @@ public class HomeInfo extends AppCompatActivity {
         setContentView(view);
         getSupportActionBar().hide();
         redirectionToLogin(this);
-        redirectionRegistro(this);
+        redirectionToRegister(this);
 
 
     }
 
 
-    public void redirectionToLogin(Activity activity) {
+    public void redirectionToRegister(Activity activity) {
 
-        binding.txtRegistrarse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newView = new Intent(activity, Registro.class);
-                startActivity(newView);
-            }
+        binding.txtRegistrarse.setOnClickListener(v -> {
+            Intent newView = new Intent(activity, Registro.class);
+            startActivity(newView);
         });
 
     }
 
-    public void redirectionRegistro(Activity activity) {
+    public void redirectionToLogin(Activity activity) {
 
-        binding.txtIniciarSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newView = new Intent(activity, login.class);
-                startActivity(newView);
-            }
+        binding.txtIniciarSesion.setOnClickListener(v -> {
+            Intent newView = new Intent(activity, login.class);
+            startActivity(newView);
         });
     }
 

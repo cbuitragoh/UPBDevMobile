@@ -45,13 +45,14 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
     public Boolean usuarioGuardarUsuario(FormularioDTO formularioDTO, ConexionSQLHelper dbHelper) {
         if (formularioDTO != null) {
             UsuarioDto usuario = UsuarioDto.getInstance();
+            usuario.setNombre(formularioDTO.getEditNombres());
             usuario.setApellido(formularioDTO.getEditApellidos());
             usuario.setSexo(formularioDTO.getSpSexo());
             usuario.setDireccion(formularioDTO.getEditDireccion());
             usuario.setCorreo(formularioDTO.getEditCorreo());
             usuario.setCiudad(formularioDTO.getEditCiudad());
             usuario.setCelular(formularioDTO.getEditCelular());
-            usuario.setUsuario(formularioDTO.getEditCorreo());
+            usuario.setUsuario(formularioDTO.getEditUsuario());
             usuario.setPassword(formularioDTO.getEditPassword());
             return saveUser(dbHelper, usuario);
         } else {

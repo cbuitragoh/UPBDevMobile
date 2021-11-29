@@ -15,6 +15,7 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
     public ConexionSQLHelper(Context context) {
         super(context, DATABASE_NOMBRE, null, DATA_VERSION);
+        System.out.println("I AM HERE");
     }
 
 

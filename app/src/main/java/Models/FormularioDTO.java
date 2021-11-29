@@ -12,6 +12,21 @@ public class FormularioDTO {
     private String editPassword;
     private String spSexo;
 
+    public FormularioDTO() {
+    }
+
+    public FormularioDTO(String editNombres, String editApellidos, String editDireccion, String editCorreo, String editCiudad, String editCelular, String editUsuario, String editPassword, String spSexo) {
+        this.editNombres = editNombres;
+        this.editApellidos = editApellidos;
+        this.editDireccion = editDireccion;
+        this.editCorreo = editCorreo;
+        this.editCiudad = editCiudad;
+        this.editCelular = editCelular;
+        this.editUsuario = editUsuario;
+        this.editPassword = editPassword;
+        this.spSexo = spSexo;
+    }
+
     public String getEditNombres() {
         return editNombres;
     }

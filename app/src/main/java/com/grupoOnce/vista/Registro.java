@@ -36,10 +36,10 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     private ActivityRegistroBinding binding;
     private final ControladorFormulario Controlador = new ControladorFormulario(this);
-    //private final ConexionSQLHelper dbHelper = new ConexionSQLHelper(getApplicationContext());
+    private ConexionSQLHelper dbHelper;
 
     private Spinner seleccionarSexo;
-    private final ArrayList<String> listaSexo = new ArrayList<String>();
+    private final ArrayList<String> listaSexo = new ArrayList<>();
 
     private ImageView selectedImage;
     private Button cameraBt;
@@ -51,99 +51,23 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         super.onCreate(savedInstanceState);
         binding = ActivityRegistroBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        dbHelper = new ConexionSQLHelper(getApplicationContext());
         setContentView(view);
         getSupportActionBar().hide();
-
         registroXML();
         darClic();
         agregarValores();
         tomarFoto(this);
-
-
-
     }
 
     /* ------------------- Métodos de la Interfaz --------------*/
 
     @Override
     public void validarResultadoFormulario(String editText, String mensaje) {
-        if(editText.equals("nombre")){
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("apellido")){
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("sexo")) {
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("direccion")) {
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("correo")) {
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("correo_valido")) {
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("ciudad")) {
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("celular")) {
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("usuario")) {
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("password")) {
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else if (editText.equals("password_length")) {
-            Context context = getApplicationContext();
-            CharSequence text = mensaje;
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+        Toast toast = Toast.makeText(context, mensaje, duration);
+        toast.show();
     }
 
     @Override
@@ -162,33 +86,41 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
         cameraBt = binding.btnTomarFoto;
 
-        cameraBt.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Toast.makeText(activity,"Se activará la cámara", Toast.LENGTH_SHORT).show();
-                askCameraPermission();
-                openCamera();
-            }
+        cameraBt.setOnClickListener(v -> {
+            Toast.makeText(activity,"Se activará la cámara", Toast.LENGTH_SHORT).show();
+            askCameraPermission();
+            openCamera();
         });
     }
 
     /* ------------- Botón de registro ------------*/
 
-    /*public void Registrar() {
-        binding.btnRegistrar.setOnClickListener(new View.OnClickListener() {
+    public void Registrar() {
+        binding.btnRegistrar.setOnClickListener(v -> {
+            //Aqui deberia ir el formulario de la vista
+            FormularioDTO form = getFormValues();
 
-            @Override
-            public void onClick(View v) {
-                //Aqui deberia ir el formulario de la vista
-                FormularioDTO form = new FormularioDTO();
-                boolean isValid = Controlador.validarFormulario(form);
+            boolean isValid = Controlador.validarFormulario(form);
 
-                if (isValid) {
-                    boolean userCreated  = Controlador.usuarioGuardarUsuario(form, dbHelper);
-                }
+            if (isValid) {
+                boolean userCreated  = Controlador.usuarioGuardarUsuario(form, dbHelper);
             }
         });
-    }*/
+    }
+
+    private FormularioDTO getFormValues() {
+        return new FormularioDTO(
+                binding.editNombres.getText().toString(),
+                binding.editApellidos.getText().toString(),
+                binding.editDireccion.getText().toString(),
+                binding.editCorreo.getText().toString(),
+                binding.editCiudad.getText().toString(),
+                binding.editCelular.getText().toString(),
+                binding.editUsuario.getText().toString(),
+                binding.editTextTextPassword.getText().toString(),
+                binding.spSexo.getSelectedItem().toString());
+
+    }
 
     /* -------------- Implementación del Spinner --------------*/
 
@@ -205,7 +137,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     private void darClic() {
         seleccionarSexo.setOnItemSelectedListener(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaSexo);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaSexo);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         seleccionarSexo.setAdapter(adapter);
     }

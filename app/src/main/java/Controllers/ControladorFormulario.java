@@ -16,37 +16,24 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
 
     @Override
     public Boolean validarFormulario(FormularioDTO formularioDTO) {
-        if (formularioDTO.getEditNombres().trim().isEmpty()) {
-            view.validarResultadoFormulario("nombre", "Los campos no pueden estar vacíos");
-            return false;
-        } else if (formularioDTO.getEditApellidos().trim().isEmpty()) {
-            view.validarResultadoFormulario("apellido", "Los campos no pueden estar vacíos");
+        boolean isValidName = validFormFieldEmpty("nombre", formularioDTO.getEditNombres());
+        boolean isValidLastName = validFormFieldEmpty("apellido", formularioDTO.getEditApellidos());
+        boolean isValidAddress = validFormFieldEmpty("direccion", formularioDTO.getEditDireccion());
+        boolean isValidEmail = validFormFieldEmpty("correo", formularioDTO.getEditCorreo());
+        boolean isValidCity = validFormFieldEmpty("ciudad", formularioDTO.getEditCiudad());
+        boolean isValidCellphone = validFormFieldEmpty("celular", formularioDTO.getEditCelular());
+        boolean isValidUser = validFormFieldEmpty("usuario", formularioDTO.getEditCorreo());
+        boolean isValidPassword = validFormFieldEmpty("password", formularioDTO.getEditPassword());
+
+        if (!(isValidName && isValidLastName && isValidAddress && isValidEmail && isValidCity && isValidCellphone && isValidUser && isValidPassword)) {
             return false;
         } else if (formularioDTO.getSpSexo().trim().equalsIgnoreCase("SELECCIONE EL SEXO")) {
             view.validarResultadoFormulario("sexo", "Seleccione el sexo");
             return false;
-        } else if (formularioDTO.getEditDireccion().trim().isEmpty()) {
-            view.validarResultadoFormulario("direccion", "Los campos no pueden estar vacíos");
-            return false;
-        } else if (formularioDTO.getEditCorreo().trim().isEmpty()) {
-            view.validarResultadoFormulario("correo", "Los campos no pueden estar vacíos");
-            return false;
         } else if (!formularioDTO.getEditCorreo().trim().matches("[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+")) {
             view.validarResultadoFormulario("correo", "El correo debe ser valido");
             return false;
-        } else if (formularioDTO.getEditCiudad().trim().isEmpty()) {
-            view.validarResultadoFormulario("ciudad", "Los campos no pueden estar vacíos");
-            return false;
-        } else if (formularioDTO.getEditCelular().trim().isEmpty()) {
-            view.validarResultadoFormulario("celular", "Los campos no pueden estar vacíos");
-            return false;
-        } else if (formularioDTO.getEditUsuario().trim().isEmpty()) {
-            view.validarResultadoFormulario("usuario", "Los campos no pueden estar vacíos");
-            return false;
-        } else if (formularioDTO.getEditPassword().trim().isEmpty()) {
-            view.validarResultadoFormulario("password", "Los campos no pueden estar vacíos");
-            return false;
-        } else if (formularioDTO.getEditPassword().trim().length() < 6) {
+        }  else if (formularioDTO.getEditPassword().trim().length() < 6) {
             view.validarResultadoFormulario("password_length", "La contraseña debe tener mínimo 6 caracteres");
             return false;
         }
@@ -83,6 +70,12 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
 
     }
 
+    private Boolean validFormFieldEmpty(String field, String value) {
 
+        if (!value.trim().isEmpty()) return true;
+
+        view.validarResultadoFormulario(field, "Los campos no pueden estar vacíos");
+        return false;
+    }
 
 }

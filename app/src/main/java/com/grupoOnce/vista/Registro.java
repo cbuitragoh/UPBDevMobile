@@ -6,14 +6,17 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,7 +42,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
     private ConexionSQLHelper dbHelper;
 
     private Spinner seleccionarSexo;
-    private final ArrayList<String> listaSexo = new ArrayList<>();
+    private final ArrayList<String> listaSexo = new ArrayList<String>();
 
     private ImageView selectedImage;
     private Button cameraBt;
@@ -55,7 +58,6 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         setContentView(view);
         getSupportActionBar().hide();
         registroXML();
-        darClic();
         agregarValores();
 
         selectedImage = binding.imageView2;
@@ -70,6 +72,8 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         });
 
         Registrar();
+        darClic();
+        tomarFoto(this);
     }
 
     /* ------------------- Métodos de la Interfaz --------------*/
@@ -151,7 +155,29 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     public void darClic() {
         seleccionarSexo.setOnItemSelectedListener(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaSexo);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaSexo){
+            @Override
+            public boolean isEnabled(int position){
+                if (position == 0){
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if(position == 0) {
+                    tv.setTextColor(Color.GRAY);
+                }
+                else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         seleccionarSexo.setAdapter(adapter);
     }

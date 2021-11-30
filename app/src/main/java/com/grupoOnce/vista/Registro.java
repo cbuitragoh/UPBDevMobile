@@ -85,13 +85,13 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
     @Override
     public void tomarFoto() {
 
-        selectedImage = binding.imageView2;
+        selectedImage = binding.editFoto;
         cameraBt = binding.btnTomarFoto;
 
         cameraBt.setOnClickListener(v -> {
             //Toast.makeText(activity,"Se activará la cámara", Toast.LENGTH_SHORT).show();
             askCameraPermission();
-            openCamera();
+
         });
     }
 
@@ -108,6 +108,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
                 if (userCreated) {
                     Intent newView = new Intent(this, login.class);
                     startActivity(newView);
+                    finish();
                 }
             }
         });

@@ -39,7 +39,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
     private ConexionSQLHelper dbHelper;
 
     private Spinner seleccionarSexo;
-    private final ArrayList<String> listaSexo = new ArrayList<>();
+    private final ArrayList<String> listaSexo = new ArrayList<String>();
 
     private ImageView selectedImage;
     private Button cameraBt;
@@ -55,8 +55,8 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         setContentView(view);
         getSupportActionBar().hide();
         registroXML();
-        darClic();
         agregarValores();
+        darClic();
         tomarFoto(this);
     }
 
@@ -130,6 +130,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
     }
 
     private void agregarValores() {
+        listaSexo.add("Sexo");
         listaSexo.add("Hombre");
         listaSexo.add("Mujer");
         listaSexo.add("Prefiero no decir");
@@ -137,7 +138,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     private void darClic() {
         seleccionarSexo.setOnItemSelectedListener(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaSexo);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaSexo);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         seleccionarSexo.setAdapter(adapter);
     }

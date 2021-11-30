@@ -1,5 +1,7 @@
 package Interfaces;
 
+import Models.ConexionSQLHelper;
+
 public interface LoginIterface {
 
     interface View {
@@ -9,7 +11,7 @@ public interface LoginIterface {
 
     interface Controlador {
         Boolean validarLogin(String editText, String indicador);
-        Boolean usuarioPermitido(String usuario, String password);
+        Boolean usuarioPermitido(String usuario, String password, ConexionSQLHelper dbHelper);
     }
 
     interface Modelo {

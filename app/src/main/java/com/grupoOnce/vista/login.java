@@ -11,17 +11,19 @@ import com.grupoOnce.vista.databinding.ActivityLoginBinding;
 
 import Interfaces.LoginIterface;
 import Controllers.ControladorLogin;
+import Models.ConexionSQLHelper;
 
 public class login extends AppCompatActivity implements LoginIterface.View {
 
     private ActivityLoginBinding binding;
     private final ControladorLogin Controlador = new ControladorLogin(this);
-
+    private ConexionSQLHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        dbHelper = new ConexionSQLHelper(getApplicationContext());
         setContentView(view);
         getSupportActionBar().hide();
         Loguear();
@@ -52,31 +54,27 @@ public class login extends AppCompatActivity implements LoginIterface.View {
 
     @Override
     public void usuarioAutorizado(Boolean valida) {
-        if(valida){
-            Toast.makeText(this, "Usuario Autorizado", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(this, "Usuario/Contrasena Incorrecto", Toast.LENGTH_SHORT).show();
-        }
+
+        String message = valida ? "Usuario Autorizado" : "Usuario/Contrasena Incorrecto";
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
 
     }
 
     public void Loguear(){
-        binding.btnIngresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                binding.editUsuario.setError(null);
-                binding.editUsuario.clearFocus();
-                binding.editPassword.setError(null);
-                binding.editPassword.clearFocus();
+        binding.btnIngresar.setOnClickListener(v -> {
+            binding.editUsuario.setError(null);
+            binding.editUsuario.clearFocus();
+            binding.editPassword.setError(null);
+            binding.editPassword.clearFocus();
 
-                Boolean p;
-                Boolean q;
-                p = Controlador.validarLogin(binding.editUsuario.getText().toString(), "usuario");
-                q = Controlador.validarLogin(binding.editPassword.getText().toString(),"password");
+            Boolean p;
+            Boolean q;
+            p = Controlador.validarLogin(binding.editUsuario.getText().toString(), "usuario");
+            q = Controlador.validarLogin(binding.editPassword.getText().toString(),"password");
 
-                if(p & q) {
-                    Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString());
-                }
+            if(p & q) {
+                Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
             }
         });
     }

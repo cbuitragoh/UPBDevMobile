@@ -1,15 +1,12 @@
 package com.grupoOnce.vista;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -76,8 +73,6 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         EditText field = findViewById(content);
         if (field != null) {
             field.setError(mensaje);
-        } else {
-            System.out.println(editText);
         }
     }
 
@@ -110,8 +105,10 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
             boolean isValid = Controlador.validarFormulario(form);
             if (isValid) {
                 boolean userCreated  = Controlador.usuarioGuardarUsuario(form, dbHelper);
-            } else {
-                this.respuestaGuardadoUsuario(isValid);
+                if (userCreated) {
+                    Intent newView = new Intent(this, login.class);
+                    startActivity(newView);
+                }
             }
         });
     }

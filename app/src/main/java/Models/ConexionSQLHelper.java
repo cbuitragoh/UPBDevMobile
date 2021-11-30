@@ -1,6 +1,7 @@
 package Models;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -41,7 +42,13 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
     public long saveUser(UsuarioDto usuario) {
         SQLiteDatabase db = getWritableDatabase();
-        return db.insert(UsersContracts.UsersEntry.TABLE_NAME, null, usuario.toContentValues());
+        return db.insert(UsersEntry.TABLE_NAME, null, usuario.toContentValues());
+    }
+
+    public Cursor getUser(String usuario, String password) {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "Select * FROM " + UsersEntry.TABLE_NAME + " WHERE " + UsersEntry.USER + " = ? AND " + UsersEntry.PASSWORD + " =  ?";
+        return db.rawQuery(query, new String[]{usuario, password});
     }
 
 }

@@ -1,6 +1,9 @@
 package Controllers;
 
+import android.database.Cursor;
+
 import Interfaces.LoginIterface;
+import Models.ConexionSQLHelper;
 
 public class ControladorLogin implements LoginIterface.Controlador {
 
@@ -34,13 +37,11 @@ public class ControladorLogin implements LoginIterface.Controlador {
     }
 
     @Override
-    public Boolean usuarioPermitido(String usuario, String password) {
-        if ("prueba".equals(usuario) && "12345".equals(password)) {
-            view.usuarioAutorizado(true);
-            return true;
-        } else {
-            view.usuarioAutorizado(false);
-            return false;
-        }
+    public Boolean usuarioPermitido(String usuario, String password, ConexionSQLHelper dbHelper) {
+
+        Cursor authorizedUser = dbHelper.getUser(usuario, password);
+
+        view.usuarioAutorizado(authorizedUser.getCount() > 0);
+        return authorizedUser.getCount() > 0;
     }
 }

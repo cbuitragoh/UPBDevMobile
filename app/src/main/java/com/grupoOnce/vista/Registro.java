@@ -57,7 +57,19 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         registroXML();
         darClic();
         agregarValores();
-        tomarFoto(this);
+
+        selectedImage = binding.imageView2;
+        cameraBt = binding.btnTomarFoto;
+
+        cameraBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+                public void onClick(View v) {
+                //Toast.makeText(RegistroActivity, "Se activará la cámara", Toast.LENGTH_SHORT).show();
+                askCameraPermission();
+            }
+        });
+
+        Registrar();
     }
 
     /* ------------------- Métodos de la Interfaz --------------*/
@@ -127,15 +139,17 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
     private void registroXML()
     {
         seleccionarSexo = binding.spSexo;
+
     }
 
     private void agregarValores() {
+        listaSexo.add("Sexo");
         listaSexo.add("Hombre");
         listaSexo.add("Mujer");
         listaSexo.add("Prefiero no decir");
     }
 
-    private void darClic() {
+    public void darClic() {
         seleccionarSexo.setOnItemSelectedListener(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaSexo);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -144,7 +158,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        parent.getItemAtPosition(position);
     }
 
     @Override
@@ -179,13 +193,13 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     private void openCamera(){
         Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //startActivityForResult(camera, CAMERA_REQUEST_CODE);
+        startActivityForResult(camera, CAMERA_REQUEST_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        selectedImage = binding.editFoto;
+
         if (requestCode == CAMERA_REQUEST_CODE) {
             assert data != null;
             Bitmap image = (Bitmap) data.getExtras().get("data");

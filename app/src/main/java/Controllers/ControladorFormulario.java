@@ -16,8 +16,8 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
 
     @Override
     public Boolean validarFormulario(FormularioDTO formularioDTO) {
-        boolean isValidName = validFormFieldEmpty("nombre", formularioDTO.getEditNombres());
-        boolean isValidLastName = validFormFieldEmpty("apellido", formularioDTO.getEditApellidos());
+        boolean isValidName = validFormFieldEmpty("nombres", formularioDTO.getEditNombres());
+        boolean isValidLastName = validFormFieldEmpty("apellidos", formularioDTO.getEditApellidos());
         boolean isValidAddress = validFormFieldEmpty("direccion", formularioDTO.getEditDireccion());
         boolean isValidEmail = validFormFieldEmpty("correo", formularioDTO.getEditCorreo());
         boolean isValidCity = validFormFieldEmpty("ciudad", formularioDTO.getEditCiudad());
@@ -31,10 +31,10 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
             view.validarResultadoFormulario("sexo", "Seleccione el sexo");
             return false;
         } else if (!formularioDTO.getEditCorreo().trim().matches("[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+")) {
-            view.validarResultadoFormulario("correo_valido", "El correo debe ser valido");
+            view.validarResultadoFormulario("correo", "El correo debe ser valido");
             return false;
         }  else if (formularioDTO.getEditPassword().trim().length() < 6) {
-            view.validarResultadoFormulario("password_length", "La contraseña debe tener mínimo 6 caracteres");
+            view.validarResultadoFormulario("password", "La contraseña debe tener mínimo 6 caracteres");
             return false;
         }
 
@@ -64,7 +64,6 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
     public boolean saveUser(ConexionSQLHelper db, UsuarioDto usuario) {
 
         long userSaved = db.saveUser(usuario);
-
         view.respuestaGuardadoUsuario(userSaved > 0);
         return userSaved > 0;
 

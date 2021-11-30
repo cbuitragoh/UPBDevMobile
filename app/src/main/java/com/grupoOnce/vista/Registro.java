@@ -9,11 +9,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -42,7 +44,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
     private ConexionSQLHelper dbHelper;
 
     private Spinner seleccionarSexo;
-    private final ArrayList<String> listaSexo = new ArrayList<String>();
+    private final ArrayList<String> listaSexo = new ArrayList<>();
 
     private ImageView selectedImage;
     private Button cameraBt;
@@ -70,21 +72,19 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     @Override
     public void validarResultadoFormulario(String editText, String mensaje) {
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_LONG;
-        Toast toast = Toast.makeText(context, mensaje, duration);
-        toast.show();
+        int content = getResources().getIdentifier("edit" + Character.toTitleCase(editText.charAt(0)) + editText.substring(1).toLowerCase(), "id", getPackageName());
+        EditText field = findViewById(content);
+        if (field != null) {
+            field.setError(mensaje);
+        } else {
+            System.out.println(editText);
+        }
     }
 
     @Override
     public void respuestaGuardadoUsuario(Boolean respuesta) {
-
-        if(respuesta){
-            Toast.makeText(this, "Usuario Guardado", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(this, "Usuario no Guardado. ", Toast.LENGTH_SHORT).show();
-        }
-
+        Toast toast = Toast.makeText(getApplicationContext(), respuesta ? "Usuario Guardado" : "Usuario no guardado", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     @Override
@@ -108,9 +108,10 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
             FormularioDTO form = getFormValues();
 
             boolean isValid = Controlador.validarFormulario(form);
-
             if (isValid) {
                 boolean userCreated  = Controlador.usuarioGuardarUsuario(form, dbHelper);
+            } else {
+                this.respuestaGuardadoUsuario(isValid);
             }
         });
     }
@@ -124,7 +125,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
                 binding.editCiudad.getText().toString(),
                 binding.editCelular.getText().toString(),
                 binding.editUsuario.getText().toString(),
-                binding.editTextTextPassword.getText().toString(),
+                binding.editPassword.getText().toString(),
                 binding.spSexo.getSelectedItem().toString());
 
     }
@@ -149,11 +150,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaSexo){
             @Override
             public boolean isEnabled(int position){
-                if (position == 0){
-                    return false;
-                } else {
-                    return true;
-                }
+                return !(position == 0);
             }
 
             @Override

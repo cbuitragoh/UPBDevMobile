@@ -15,23 +15,22 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
     public ConexionSQLHelper(Context context) {
         super(context, DATABASE_NOMBRE, null, DATA_VERSION);
-        System.out.println("I AM HERE");
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + UsersEntry.TABLE_NAME + "("
-                + UsersEntry._ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + UsersEntry.NAME + "TEXT NOT NULL, "
-                + UsersEntry.LASTNAME + "TEXT NOT NULL,"
-                + UsersEntry.GENDER + "TEXT NOT NULL,"
-                + UsersEntry.ADDRESS + "TEXT NOT NULL,"
-                + UsersEntry.EMAIL + "TEXT NOT NULL,"
-                + UsersEntry.CELLPHONE  + "TEXT NOT NULL,"
-                + UsersEntry.CITY + "TEXT NOT NULL,"
-                + UsersEntry.USER  + "TEXT NOT NULL,"
-                + UsersEntry.PASSWORD + "TEXT NOT NULL)" );
+                + UsersEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + UsersEntry.NAME + " TEXT NOT NULL, "
+                + UsersEntry.LASTNAME + " TEXT NOT NULL,"
+                + UsersEntry.GENDER + " TEXT NOT NULL,"
+                + UsersEntry.ADDRESS + " TEXT NOT NULL,"
+                + UsersEntry.EMAIL + " TEXT NOT NULL,"
+                + UsersEntry.CELLPHONE  + " TEXT NOT NULL,"
+                + UsersEntry.CITY + " TEXT NOT NULL,"
+                + UsersEntry.USER  + " TEXT NOT NULL,"
+                + UsersEntry.PASSWORD + " TEXT NOT NULL)" );
     }
 
     @Override

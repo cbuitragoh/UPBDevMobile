@@ -55,86 +55,100 @@
             android:paddingStart="30dp"
             android:paddingEnd="30dp">
 
-            <EditText
-                android:id="@+id/editNombres"
-                style="@style/vistaRegistro"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Nombres"
-                android:inputType="textPersonName" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/editApellidos"
-                style="@style/vistaRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Apellidos"
-                android:inputType="textPersonName" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/spSexo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                    <EditText
+                        android:id="@+id/editNombres"
+                        style="@style/vistaRegistro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Nombres"
+                        android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/editDireccion"
-                style="@style/vistaRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Dirección"
-                android:inputType="textPersonName" />
+                    <EditText
+                        android:id="@+id/editApellidos"
+                        style="@style/vistaRegistro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Apellidos"
+                        android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/editCiudad"
-                style="@style/vistaRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Ciudad"
-                android:inputType="textPersonName" />
+                    <Spinner
+                        android:id="@+id/spSexo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
-            <EditText
-                android:id="@+id/editCelular"
-                style="@style/vistaRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Celular"
-                android:inputType="phone" />
+                    <EditText
+                        android:id="@+id/editDireccion"
+                        style="@style/vistaRegistro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Dirección"
+                        android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/editCorreo"
-                style="@style/vistaRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Correo Electrónico"
-                android:inputType="textEmailAddress" />
+                    <EditText
+                        android:id="@+id/editCiudad"
+                        style="@style/vistaRegistro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Ciudad"
+                        android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/editUsuario"
-                style="@style/vistaRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Usuario"
-                android:inputType="textPersonName" />
+                    <EditText
+                        android:id="@+id/editCelular"
+                        style="@style/vistaRegistro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Celular"
+                        android:inputType="phone" />
 
-            <EditText
-                android:id="@+id/editTextTextPassword"
-                style="@style/vistaRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                tools:ignore="TouchTargetSizeCheck" />
+                    <EditText
+                        android:id="@+id/editCorreo"
+                        style="@style/vistaRegistro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Correo Electrónico"
+                        android:inputType="textEmailAddress" />
+
+                    <EditText
+                        android:id="@+id/editUsuario"
+                        style="@style/vistaRegistro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Usuario"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/editTextTextPassword"
+                        style="@style/vistaRegistro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Contraseña"
+                        android:inputType="textPassword"
+                        android:minHeight="48dp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
         </LinearLayout>
 
         <LinearLayout

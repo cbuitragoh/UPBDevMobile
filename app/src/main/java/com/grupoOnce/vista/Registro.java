@@ -60,20 +60,10 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         registroXML();
         agregarValores();
 
-        selectedImage = binding.imageView2;
-        cameraBt = binding.btnTomarFoto;
-
-        cameraBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-                public void onClick(View v) {
-                //Toast.makeText(RegistroActivity, "Se activará la cámara", Toast.LENGTH_SHORT).show();
-                askCameraPermission();
-            }
-        });
-
+        tomarFoto();
         Registrar();
         darClic();
-        tomarFoto(this);
+
     }
 
     /* ------------------- Métodos de la Interfaz --------------*/
@@ -98,12 +88,13 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
     }
 
     @Override
-    public void tomarFoto(Activity activity) {
+    public void tomarFoto() {
 
+        selectedImage = binding.imageView2;
         cameraBt = binding.btnTomarFoto;
 
         cameraBt.setOnClickListener(v -> {
-            Toast.makeText(activity,"Se activará la cámara", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(activity,"Se activará la cámara", Toast.LENGTH_SHORT).show();
             askCameraPermission();
             openCamera();
         });
@@ -184,7 +175,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        parent.getItemAtPosition(position);
+        //parent.getItemAtPosition(position);
     }
 
     @Override

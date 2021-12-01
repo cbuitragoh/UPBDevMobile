@@ -8,4 +8,9 @@
     <string name="button">Button</string>
     <string name="registrarse">Registrarse</string>
     <string name="spinner">Sexo</string>
+    <string name="lo_quiero">Lo quiero</string>
+    <string name="nombre_producto">NOMBRE PRODUCTO</string>
+    <string name="tipo_producto">Tipo Producto:</string>
+    <string name="fecha_vencimiento">Fecha Vencimiento: </string>
+    <string name="descripcion_producto">DESCRIPCIÓN</string>
 </resources>

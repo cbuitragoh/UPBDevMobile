@@ -8,27 +8,10 @@
     android:background="@drawable/homeinfo"
     tools:context=".HomeInfo">
 
-
-    <Button
-        android:id="@+id/txtRegistrarse"
-        android:layout_width="144dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="36dp"
-        android:background="@drawable/boton_registrarse"
-        android:text="@string/registrarse"
-        android:textColor="@color/white"
-        android:textCursorDrawable="@color/purple_200"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906"
-        tools:ignore="TextContrastCheck" />
-
     <Button
         android:id="@+id/txtIniciarSesion"
-        android:layout_width="138dp"
+        android:layout_width="150dp"
         android:layout_height="54dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/boton_sesion"
         android:text="@string/login"
         android:textColor="@color/white"
@@ -36,9 +19,26 @@
         android:textCursorDrawable="@color/Bahia"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.696"
+        app:layout_constraintHorizontal_bias="0.697"
         app:layout_constraintStart_toEndOf="@+id/txtRegistrarse"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.903"
+        app:layout_constraintVertical_bias="0.905"
         tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/txtRegistrarse"
+        android:layout_width="159dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/boton_registrarse"
+        android:paddingLeft="10dp"
+        android:text="@string/registrarse"
+        android:textColor="@color/white"
+        android:textCursorDrawable="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.901"
+        tools:ignore="TextContrastCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

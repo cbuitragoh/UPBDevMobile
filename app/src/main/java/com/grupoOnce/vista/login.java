@@ -1,6 +1,7 @@
 package com.grupoOnce.vista;
 
 //import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -75,6 +76,10 @@ public class login extends AppCompatActivity implements LoginIterface.View {
 
             if(p & q) {
                 Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
+
+                Intent newView = new Intent(this, Inicio.class);
+                startActivity(newView);
+                finish();
             }
         });
     }

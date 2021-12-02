@@ -10,7 +10,11 @@
     <string name="spinner">Sexo</string>
     <string name="lo_quiero">Lo quiero</string>
     <string name="nombre_producto">NOMBRE PRODUCTO</string>
-    <string name="tipo_producto">Tipo Producto:</string>
-    <string name="fecha_vencimiento">F.V.: </string>
+    <string name="tipo_producto">TIPO PRODUCTO</string>
+    <string name="fecha_vencimiento">FECHA VENCIMIENTO </string>
+    <string name="fecha_vencimiento_corta">F.V. </string>
     <string name="descripcion_producto">DESCRIPCIÓN</string>
+    <string name="guardar_producto">GUARDAR PRODUCTO</string>
+    <string name="foto_producto">TOMAR FOTO PRODUCTO</string>
+    <string name="ubicacion">Ubicación</string>
 </resources>

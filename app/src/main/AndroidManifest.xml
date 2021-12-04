@@ -20,6 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UPBDevMobile">
         <activity
+            android:name=".NavigationMenu"
+            android:exported="false"
+            android:label="@string/title_activity_navigation_menu" />
+        <activity
             android:name=".PublicarAlimento"
             android:exported="false" />
         <activity
@@ -43,14 +47,13 @@
         <activity
             android:name=".HomeInfo"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

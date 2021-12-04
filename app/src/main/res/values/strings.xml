@@ -17,4 +17,8 @@
     <string name="guardar_producto">GUARDAR PRODUCTO</string>
     <string name="foto_producto">TOMAR FOTO PRODUCTO</string>
     <string name="ubicacion">Ubicación</string>
+    <string name="title_activity_navigation_menu">NavigationMenu</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Perfil</string>
+    <string name="title_notifications">Publicaciones</string>
 </resources>

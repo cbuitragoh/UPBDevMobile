@@ -21,4 +21,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Perfil</string>
     <string name="title_notifications">Publicaciones</string>
+    <string name="title_salir">Salir</string>
 </resources>

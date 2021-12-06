@@ -1,12 +1,15 @@
 package com.grupoOnce.vista;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -36,6 +40,7 @@ import Models.FormularioDTO;
 
 public class Registro extends AppCompatActivity implements FormularioInterfaz.View, AdapterView.OnItemSelectedListener{
 
+    Menu menu;
     private ActivityRegistroBinding binding;
     private final ControladorFormulario Controlador = new ControladorFormulario(this);
     private ConexionSQLHelper dbHelper;
@@ -218,5 +223,54 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
             selectedImage.setImageBitmap(image);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        int id = item.getItemId();
+
+        if (id == R.id.item1){
+
+            Toast.makeText(this, "Ha elegido la opción 1 del menú", Toast.LENGTH_SHORT).show();
+        }else if(id == R.id.item2){
+
+            Toast.makeText(this, "Ha elegido la opcion 2", Toast.LENGTH_SHORT).show();
+
+        }else if (id == R.id.item3){
+            AlertDialog.Builder builder = new AlertDialog.Builder(Registro.this);
+            builder.setMessage("¿Salir de la aplicación?");
+            builder.setCancelable(true);
+
+            builder.setNegativeButton("YES", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            builder.setPositiveButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+            Toast.makeText(this, "Ha elegido la opción 3", Toast.LENGTH_SHORT).show();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 
 }

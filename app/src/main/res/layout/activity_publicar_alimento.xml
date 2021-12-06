@@ -25,9 +25,9 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="181dp"
-                android:layout_height="126dp"
-                app:srcCompat="@drawable/avatar_alimento" />
+                android:layout_width="148dp"
+                android:layout_height="110dp"
+                app:srcCompat="@drawable/logo_alimento" />
 
             <Button
                 android:id="@+id/btnFotoProducto"
@@ -88,7 +88,7 @@
                         android:id="@+id/editTextTextPersonName4"
                         style="@style/vistaRegistro"
                         android:layout_width="match_parent"
-                        android:layout_height="277dp"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:gravity="top"
                         android:hint="@string/descripcion_producto"

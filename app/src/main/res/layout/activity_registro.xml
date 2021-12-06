@@ -24,9 +24,10 @@
 
             <ImageView
                 android:id="@+id/editFoto"
-                android:layout_width="153dp"
-                android:layout_height="107dp"
+                android:layout_width="133dp"
+                android:layout_height="105dp"
                 android:layout_centerHorizontal="true"
+                android:background="@drawable/usuario"
                 android:cropToPadding="true"
                 tools:visibility="visible" />
 

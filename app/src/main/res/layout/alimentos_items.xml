@@ -1,56 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imagenAlimento"
-            android:layout_width="63dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/ic_launcher_foreground" />
+            android:layout_width="213dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/logo_alimento" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:alwaysDrawnWithCache="true"
+            android:animateLayoutChanges="true"
+            android:background="#A6CC7B"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/nombreAlimento"
-                android:layout_width="wrap_content"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mate_sc"
                 android:text="@string/nombre_producto"
+                android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/fechaVencimiento"
-                android:layout_width="match_parent"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="15dp"
-                android:text="@string/fecha_vencimiento_corta" />
+                android:fontFamily="@font/mate_sc"
+                android:text="@string/fecha_vencimiento"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 
     </LinearLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/teal_700"
-        android:layout_below="@id/imagenAlimento"
-        android:layout_marginTop="11dp" />
-
 
 
 </LinearLayout>

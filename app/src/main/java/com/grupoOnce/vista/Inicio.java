@@ -34,7 +34,7 @@ public class Inicio extends AppCompatActivity {
 
         listaAlimentos= new ArrayList<>();
         recyclerAlimentos = (RecyclerView) findViewById(R.id.Recyclerid);
-        recyclerAlimentos.setLayoutManager(new LinearLayoutManager(this));
+        recyclerAlimentos.setLayoutManager(new GridLayoutManager(this, 2));
 
         llenarAlimentos();
 
@@ -44,13 +44,13 @@ public class Inicio extends AppCompatActivity {
     }
 
     private void llenarAlimentos() {
-        listaAlimentos.add(new PublicacionesMostrar("churrasco", "argentino", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("pechuga", "a la plancha", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("pollo", "apanado", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("pasteles", "de carne", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("milanesa", "de cerdo", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("quesadillas", "mozzarella", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("papa", "francesa", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("salsa", "Aliolí", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("churrasco", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("pechuga", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("pollo", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("pasteles", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("milanesa", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("quesadillas", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("papa", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("salsa", "fecha vencimiento: 31/12/2021", R.drawable.logo));
     }
 }

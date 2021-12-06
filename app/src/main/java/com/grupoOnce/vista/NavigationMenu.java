@@ -17,10 +17,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.grupoOnce.vista.databinding.ActivityNavigationMenuBinding;
+import com.grupoOnce.vista.ui.home.HomeFragment;
+
+import java.util.Objects;
 
 public class NavigationMenu extends AppCompatActivity {
 
-    Menu menu;
+    //Menu menu;
     private ActivityNavigationMenuBinding binding;
 
     @Override
@@ -29,6 +32,7 @@ public class NavigationMenu extends AppCompatActivity {
 
         binding = ActivityNavigationMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

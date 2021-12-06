@@ -11,31 +11,50 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.grupoOnce.vista.AdapterAlimentos;
 import com.grupoOnce.vista.R;
 import com.grupoOnce.vista.databinding.FragmentHomeBinding;
 
+import java.util.ArrayList;
+
+import Models.PublicacionesMostrar;
+
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+
     private FragmentHomeBinding binding;
+
+    RecyclerView recyclerAlimentos;
+    ArrayList<PublicacionesMostrar> listaAlimentos;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        View vista = inflater.inflate(R.layout.fragment_home,container,false);
+        listaAlimentos = new ArrayList<>();
+        recyclerAlimentos= (RecyclerView) vista.findViewById(R.id.Recyclerid2);
+        recyclerAlimentos.setLayoutManager(new GridLayoutManager(getContext(),2));
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+        llenarLista();
+        AdapterAlimentos adapter = new AdapterAlimentos(listaAlimentos);
+        recyclerAlimentos.setAdapter(adapter);
+        return vista;
+
+    }
+
+    private void llenarLista() {
+
+        listaAlimentos.add(new PublicacionesMostrar("churrasco", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("pechuga", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("pollo", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("pasteles", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("milanesa", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("quesadillas", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("papa", "fecha vencimiento: 31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("salsa", "fecha vencimiento: 31/12/2021", R.drawable.logo));
     }
 
     @Override

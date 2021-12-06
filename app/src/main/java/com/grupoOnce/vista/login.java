@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.grupoOnce.vista.databinding.ActivityLoginBinding;
 
+import java.util.Objects;
+
 import Interfaces.LoginIterface;
 import Controllers.ControladorLogin;
 import Models.ConexionSQLHelper;
@@ -26,7 +28,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
         View view = binding.getRoot();
         dbHelper = new ConexionSQLHelper(getApplicationContext());
         setContentView(view);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         Loguear();
 
     }
@@ -77,7 +79,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
             if(p & q) {
                 Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
 
-                Intent newView = new Intent(this, Inicio.class);
+                Intent newView = new Intent(this, NavigationMenu.class);
                 startActivity(newView);
                 finish();
             }

@@ -31,6 +31,7 @@ import androidx.core.content.ContextCompat;
 import com.grupoOnce.vista.databinding.ActivityRegistroBinding;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import Controllers.ControladorFormulario;
 import Interfaces.FormularioInterfaz;
@@ -60,7 +61,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         View view = binding.getRoot();
         dbHelper = new ConexionSQLHelper(getApplicationContext());
         setContentView(view);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         registroXML();
         agregarValores();
 

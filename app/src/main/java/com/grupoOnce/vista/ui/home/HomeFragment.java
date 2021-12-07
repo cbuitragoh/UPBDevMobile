@@ -2,6 +2,7 @@ package com.grupoOnce.vista.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ import Models.PublicacionesMostrar;
 
 public class HomeFragment extends Fragment {
 
-
+    Menu menu;
     private FragmentHomeBinding binding;
 
     RecyclerView recyclerAlimentos;
@@ -56,6 +57,8 @@ public class HomeFragment extends Fragment {
         listaAlimentos.add(new PublicacionesMostrar("papa", "fecha vencimiento: 31/12/2021", R.drawable.logo));
         listaAlimentos.add(new PublicacionesMostrar("salsa", "fecha vencimiento: 31/12/2021", R.drawable.logo));
     }
+
+
 
     @Override
     public void onDestroyView() {

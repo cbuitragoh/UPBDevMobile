@@ -55,7 +55,7 @@ public class HomeInfo extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.bottom_nav_menu, menu);
+        inflater.inflate(R.menu.menu_superior, menu);
         return true;
     }
 
@@ -64,21 +64,16 @@ public class HomeInfo extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.item1){
+        if (id == R.id.menu_invitar_amigos){
 
-            Toast.makeText(this, "Ha elegido la opción 1 del menú", Toast.LENGTH_SHORT).show();
-        }else if(id == R.id.item2){
-
-            Toast.makeText(this, "Ha elegido la opcion 2", Toast.LENGTH_SHORT).show();
-
-        }else if(id == R.id.item3){
-
-            Toast.makeText(this, "Ha elegido la opcion 3", Toast.LENGTH_SHORT).show();
-
+            Intent newView = new Intent(this, InvitarAmigos.class);
+            startActivity(newView);
+            finish();
+            //Toast.makeText(this, "Ha elegido Invitar Amigos", Toast.LENGTH_SHORT).show();
         }
-        else if (id == R.id.navigation_salir){
+        else if (id == R.id.menu_salir){
             AlertDialog.Builder builder = new AlertDialog.Builder(HomeInfo.this);
-            builder.setMessage("¿Salir de la aplicación?");
+            builder.setMessage("¿Realemente desea Salir?");
             builder.setCancelable(true);
 
             builder.setNegativeButton("YES", new DialogInterface.OnClickListener() {

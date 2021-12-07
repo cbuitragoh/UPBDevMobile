@@ -22,4 +22,8 @@
     <string name="title_dashboard">Perfil</string>
     <string name="title_notifications">Publicaciones</string>
     <string name="title_salir">Salir</string>
+    <string name="invitar_amigos">Invitar</string>
+    <string name="invitacion">¿Quieres invitar a tus amigos?</string>
+    <string name="exito">Ha sido todo un éxito</string>
+    <string name="usuario_invita">Nombre Usuario, tu producto</string>
 </resources>

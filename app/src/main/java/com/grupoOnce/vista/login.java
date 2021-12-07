@@ -77,11 +77,13 @@ public class login extends AppCompatActivity implements LoginIterface.View {
             q = Controlador.validarLogin(binding.editPassword.getText().toString(),"password");
 
             if(p & q) {
-                Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
+               Boolean j = Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
+                if (j){
+                    Intent newView = new Intent(this, NavigationMenu.class);
+                    startActivity(newView);
+                    finish();
+                }
 
-                Intent newView = new Intent(this, NavigationMenu.class);
-                startActivity(newView);
-                finish();
             }
         });
     }

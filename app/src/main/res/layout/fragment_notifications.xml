@@ -24,7 +24,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/fotoAlimento"
                 android:layout_width="148dp"
                 android:layout_height="110dp"
                 app:srcCompat="@drawable/logo_alimento" />
@@ -57,7 +57,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/nombreProducto"
                         style="@style/vistaRegistro"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"

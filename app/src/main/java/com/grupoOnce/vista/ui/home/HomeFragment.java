@@ -33,7 +33,7 @@ import Models.PublicacionesMostrar;
 
 public class HomeFragment extends Fragment implements InicioInterface.View{
 
-    Menu menu;
+
     private FragmentHomeBinding binding;
 
 
@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment implements InicioInterface.View{
 
                 vistaDetalle.putExtra("nombre",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getNombre());
                 vistaDetalle.putExtra("fechaVencimiento",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getFecha());
-                vistaDetalle.putExtra("foto",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getFoto());
+                //vistaDetalle.putExtra("estado",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getEstado());
 
                 startActivity(vistaDetalle);
 
@@ -73,14 +73,14 @@ public class HomeFragment extends Fragment implements InicioInterface.View{
 
     private void llenarLista() {
 
-        listaAlimentos.add(new PublicacionesMostrar("churrasco", "31/12/2021", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("pechuga", "31/12/2021", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("pollo", "31/12/2021", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("pasteles", "31/12/2021", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("milanesa", "31/12/2021", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("quesadillas", "31/12/2021", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("papa", "31/12/2021", R.drawable.logo));
-        listaAlimentos.add(new PublicacionesMostrar("salsa", "31/12/2021", R.drawable.logo));
+        listaAlimentos.add(new PublicacionesMostrar("churrasco", "31/12/2021", R.drawable.logo,"nuevo"));
+        listaAlimentos.add(new PublicacionesMostrar("pechuga", "31/12/2021", R.drawable.logo,"nuevo"));
+        listaAlimentos.add(new PublicacionesMostrar("pollo", "31/12/2021", R.drawable.logo,"nuevo"));
+        listaAlimentos.add(new PublicacionesMostrar("pasteles", "31/12/2021", R.drawable.logo,"nuevo"));
+        listaAlimentos.add(new PublicacionesMostrar("milanesa", "31/12/2021", R.drawable.logo,"nuevo"));
+        listaAlimentos.add(new PublicacionesMostrar("quesadillas", "31/12/2021", R.drawable.logo,"nuevo"));
+        listaAlimentos.add(new PublicacionesMostrar("papa", "31/12/2021", R.drawable.logo,"nuevo"));
+        listaAlimentos.add(new PublicacionesMostrar("salsa", "31/12/2021", R.drawable.logo,"nuevo"));
     }
 
 

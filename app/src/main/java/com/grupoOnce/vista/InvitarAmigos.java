@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,6 +20,7 @@ import com.grupoOnce.vista.databinding.ActivityInvitarAmigosBinding;
 public class InvitarAmigos extends AppCompatActivity {
     Menu menu;
     private ActivityInvitarAmigosBinding binding;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,17 @@ public class InvitarAmigos extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
+        url="https://wa.me/?text=¡Hola!, Estoy en Food for all app, te invito a" +
+                " colaborar para reducir el desperdicio de alimentos";
+
+        binding.btnInvitarAmigos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
     }
 
 

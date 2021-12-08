@@ -20,6 +20,7 @@ public class AdapterAlimentos
     ArrayList<PublicacionesMostrar> listaAlimentos;
     private View.OnClickListener listener;
 
+
     public AdapterAlimentos(ArrayList<PublicacionesMostrar> listaAlimentos) {
         this.listaAlimentos = listaAlimentos;
     }
@@ -39,6 +40,8 @@ public class AdapterAlimentos
         holder.nombreAlimen.setText(listaAlimentos.get(position).getNombre());
         holder.fechaVenc.setText(listaAlimentos.get(position).getFecha());
         holder.fotoAlimento.setImageResource(listaAlimentos.get(position).getFoto());
+        holder.estadoAlimento.setText(listaAlimentos.get(position).getEstado());
+
     }
 
     @Override
@@ -58,13 +61,14 @@ public class AdapterAlimentos
 
     public class ViewHolderAlimentos extends RecyclerView.ViewHolder {
 
-        TextView nombreAlimen, fechaVenc;
+        TextView nombreAlimen, fechaVenc, estadoAlimento;
         ImageView fotoAlimento;
 
         public ViewHolderAlimentos(@NonNull View itemView) {
             super(itemView);
             nombreAlimen = (TextView) itemView.findViewById(R.id.nombreAlimento);
             fechaVenc = (TextView) itemView.findViewById(R.id.fechaVencimiento);
+            estadoAlimento = (TextView) itemView.findViewById(R.id.idEstadoProducto);
             fotoAlimento = (ImageView) itemView.findViewById(R.id.imagenAlimento);
         }
     }

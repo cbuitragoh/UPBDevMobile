@@ -19,6 +19,10 @@ public class Detalle extends AppCompatActivity {
         setContentView(view);
         getSupportActionBar().hide();
 
+        binding.editNombreAlimento.setText(getIntent().getExtras().getString("nombre"));
+        binding.textBoxFv.setText(getIntent().getExtras().getString("fechaVencimiento"));
+        //binding.editFotoAlimento.setImageResource(getIntent().getExtras().getBundle("foto"));
+
 
     }
 }

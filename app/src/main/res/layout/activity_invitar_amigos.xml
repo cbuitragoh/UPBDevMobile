@@ -6,12 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".InvitarAmigos">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#FFFFFF"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,100 +17,112 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="163dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"
-                app:srcCompat="@drawable/logo" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="289dp"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewUsuarioInvita"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="163dp"
                 android:gravity="center"
-                android:text="@string/usuario_invita"
-                android:textSize="16sp" />
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageProducto"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/logo_alimento" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:contentDescription="TODO"
+                    app:srcCompat="@drawable/logo" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/textViewExito"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/mate_sc"
+                android:layout_height="289dp"
                 android:gravity="center"
-                android:text="@string/exito"
-                android:textSize="34sp" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewUsuarioInvita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="@string/usuario_invita"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/imageProducto"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="20dp"
+                    android:contentDescription="TODO"
+                    app:srcCompat="@drawable/logo_alimento" />
+
+                <TextView
+                    android:id="@+id/textViewExito"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/mate_sc"
+                    android:gravity="center"
+                    android:text="@string/exito"
+                    android:textSize="34sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewInvitar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="40dp"
+                    android:fontFamily="@font/mate_sc"
+                    android:gravity="center"
+                    android:text="@string/invitacion"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:contentDescription="TODO"
+                    app:srcCompat="@drawable/flecha" />
+
+                <Button
+                    android:id="@+id/btnInvitarAmigos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="0dp"
+                    android:background="#B3BB21"
+                    android:text="@string/invitar_amigos"
+                    android:textColor="#FFFFFF"
+                    tools:ignore="TextContrastCheck" />
+
+            </LinearLayout>
 
         </LinearLayout>
+    </ScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textViewInvitar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="40dp"
-                android:fontFamily="@font/mate_sc"
-                android:gravity="center"
-                android:text="@string/invitacion"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:srcCompat="@drawable/flecha" />
-
-            <Button
-                android:id="@+id/btnInvitarAmigos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="0dp"
-                android:background="#B3BB21"
-                android:text="@string/invitar_amigos"
-                android:textColor="#FFFFFF"
-                tools:ignore="TextContrastCheck" />
-
-        </LinearLayout>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

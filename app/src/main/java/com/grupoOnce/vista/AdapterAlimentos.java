@@ -13,9 +13,12 @@ import java.util.ArrayList;
 
 import Models.PublicacionesMostrar;
 
-public class AdapterAlimentos extends RecyclerView.Adapter<AdapterAlimentos.ViewHolderAlimentos> {
+public class AdapterAlimentos
+        extends RecyclerView.Adapter<AdapterAlimentos.ViewHolderAlimentos>
+        implements View.OnClickListener{
 
     ArrayList<PublicacionesMostrar> listaAlimentos;
+    private View.OnClickListener listener;
 
     public AdapterAlimentos(ArrayList<PublicacionesMostrar> listaAlimentos) {
         this.listaAlimentos = listaAlimentos;
@@ -25,6 +28,9 @@ public class AdapterAlimentos extends RecyclerView.Adapter<AdapterAlimentos.View
     @Override
     public ViewHolderAlimentos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.alimentos_items,null, false);
+
+        vista.setOnClickListener(this);
+
         return new ViewHolderAlimentos(vista);
     }
 
@@ -38,6 +44,16 @@ public class AdapterAlimentos extends RecyclerView.Adapter<AdapterAlimentos.View
     @Override
     public int getItemCount() {
         return listaAlimentos.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener=listener;
+    }
+    @Override
+    public void onClick(View view) {
+        if(listener!=null){
+            listener.onClick(view);
+        }
     }
 
     public class ViewHolderAlimentos extends RecyclerView.ViewHolder {

@@ -37,10 +37,20 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/mate_sc"
+                android:gravity="center"
                 android:text="@string/nombre_producto"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mate_sc"
+                android:gravity="center"
+                android:text="@string/fecha_vencimiento"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/fechaVencimiento"
@@ -50,6 +60,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/mate_sc"
+                android:gravity="center"
                 android:text="@string/fecha_vencimiento"
                 android:textColor="#FFFFFF" />
 

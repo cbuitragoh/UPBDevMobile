@@ -1,28 +1,55 @@
 package Models;
 
+import android.content.ContentValues;
+
+import Contracts.ProductContracts;
+import Contracts.UsersContracts;
+
 public class PublicacionesDTO {
-    private String id;
+    private String idUser;
     private String comentario;
     private String fecha;
-    private String nombre_alimento;
-    private String tipo_alimento;
+    private String nombre;
+    private String tipo;
+    private productState estado;
+    private String image;
 
     public PublicacionesDTO() { }
 
     public PublicacionesDTO(String id, String comentario, String fecha, String nombre_alimento, String tipo_alimento) {
-        this.id = id;
+        this.idUser = id;
         this.comentario = comentario;
         this.fecha = fecha;
-        this.nombre_alimento = nombre_alimento;
-        this.tipo_alimento = tipo_alimento;
+        this.nombre = nombre_alimento;
+        this.tipo = tipo_alimento;
+        this.estado = productState.NUEVO;
     }
 
-    public String getId() {
-        return id;
+    public ContentValues toContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(ProductContracts.ProductEntry.NAME, nombre);
+        values.put(ProductContracts.ProductEntry.TYPE, tipo);
+        values.put(ProductContracts.ProductEntry.EXPIREDDATE, fecha);
+        values.put(ProductContracts.ProductEntry.COMMENT, comentario);
+        values.put(ProductContracts.ProductEntry.USERID, idUser);
+        values.put(ProductContracts.ProductEntry.STATE, String.valueOf(estado));
+        return values;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
     public String getComentario() {
@@ -41,19 +68,27 @@ public class PublicacionesDTO {
         this.fecha = fecha;
     }
 
-    public String getNombre_alimento() {
-        return nombre_alimento;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_alimento(String nombre_alimento) {
-        this.nombre_alimento = nombre_alimento;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getTipo_alimento() {
-        return tipo_alimento;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipo_alimento(String tipo_alimento) {
-        this.tipo_alimento = tipo_alimento;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public productState getEstado() {
+        return estado;
+    }
+
+    public void setEstado(productState estado) {
+        this.estado = estado;
     }
 }

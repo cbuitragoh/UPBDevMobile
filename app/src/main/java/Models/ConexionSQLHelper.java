@@ -7,12 +7,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import Contracts.UsersContracts;
 import Contracts.UsersContracts.UsersEntry;
+import db.Product;
+import db.User;
 
 public class ConexionSQLHelper extends SQLiteOpenHelper {
 
    private static final int DATA_VERSION = 1;
    private static final String DATABASE_NOMBRE = "FoodForAll.db";
    public static final String TABLA_USUARIOS = "usuarios";
+    public static final String TABLA_PRODUCTOS = "productos";
 
     public ConexionSQLHelper(Context context) {
         super(context, DATABASE_NOMBRE, null, DATA_VERSION);
@@ -21,34 +24,25 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + UsersEntry.TABLE_NAME + "("
-                + UsersEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + UsersEntry.NAME + " TEXT NOT NULL, "
-                + UsersEntry.LASTNAME + " TEXT NOT NULL,"
-                + UsersEntry.GENDER + " TEXT NOT NULL,"
-                + UsersEntry.ADDRESS + " TEXT NOT NULL,"
-                + UsersEntry.EMAIL + " TEXT NOT NULL,"
-                + UsersEntry.CELLPHONE  + " TEXT NOT NULL,"
-                + UsersEntry.CITY + " TEXT NOT NULL,"
-                + UsersEntry.USER  + " TEXT NOT NULL,"
-                + UsersEntry.PASSWORD + " TEXT NOT NULL)" );
+        User.createUserTable(db);
+        Product.createProductTable(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE "+ TABLA_USUARIOS);
+        db.execSQL("DROP TABLE "+ TABLA_PRODUCTOS);
         onCreate(db);
     }
 
-    public long saveUser(UsuarioDto usuario) {
-        SQLiteDatabase db = getWritableDatabase();
-        return db.insert(UsersEntry.TABLE_NAME, null, usuario.toContentValues());
+    public SQLiteDatabase getReadableDb() {
+        return getReadableDatabase();
     }
 
-    public Cursor getUser(String usuario, String password) {
-        SQLiteDatabase db = getReadableDatabase();
-        String query = "Select * FROM " + UsersEntry.TABLE_NAME + " WHERE " + UsersEntry.USER + " = ? AND " + UsersEntry.PASSWORD + " =  ?";
-        return db.rawQuery(query, new String[]{usuario, password});
+    public SQLiteDatabase getWritableDb() {
+        return getReadableDatabase();
     }
+
+
 
 }

@@ -44,7 +44,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
     Menu menu;
     private ActivityRegistroBinding binding;
     private final ControladorFormulario Controlador = new ControladorFormulario(this);
-    private ConexionSQLHelper dbHelper;
+    private static ConexionSQLHelper dbHelper;
 
     private Spinner seleccionarSexo;
     private final ArrayList<String> listaSexo = new ArrayList<>();
@@ -59,9 +59,9 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
         super.onCreate(savedInstanceState);
         binding = ActivityRegistroBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        dbHelper = new ConexionSQLHelper(getApplicationContext());
         setContentView(view);
         Objects.requireNonNull(getSupportActionBar()).hide();
+        dbHelper = new ConexionSQLHelper(this.getApplicationContext());
         registroXML();
         agregarValores();
 
@@ -99,6 +99,14 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
             askCameraPermission();
 
         });
+    }
+
+    @Override
+    public void respuestaUsuarioExistente(Boolean exists) {
+        if (exists) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Usuario ya se encuentra registrado", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     /* ------------- Botón de registro ------------*/
@@ -251,18 +259,8 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
             builder.setMessage("¿Salir de la aplicación?");
             builder.setCancelable(true);
 
-            builder.setNegativeButton("YES", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    finish();
-                }
-            });
-            builder.setPositiveButton("NO", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+            builder.setNegativeButton("YES", (dialog, which) -> finish());
+            builder.setPositiveButton("NO", (dialog, which) -> dialog.cancel());
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
             Toast.makeText(this, "Ha elegido la opción 3", Toast.LENGTH_SHORT).show();

@@ -3,6 +3,7 @@ package Interfaces;
 
 import java.util.List;
 
+import Models.ConexionSQLHelper;
 import Models.PublicacionesDTO;
 
 public interface InicioInterface {
@@ -13,7 +14,7 @@ public interface InicioInterface {
     }
 
     interface Controlador {
-        void recuperarLista();
+        void recuperarLista(ConexionSQLHelper dbHelper);
         void salirApp();
     }
 

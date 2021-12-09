@@ -25,8 +25,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.grupoOnce.vista.R;
 import com.grupoOnce.vista.databinding.ActivityNavigationMenuBinding;
 import com.grupoOnce.vista.databinding.FragmentNotificationsBinding;
+import com.grupoOnce.vista.login;
 
+import Controllers.ControladorFormulario;
+import Controllers.ControladorNotificacion;
 import Interfaces.NotificacionInterfaz;
+import Models.ConexionSQLHelper;
+import Models.FormularioDTO;
+import Models.FormularioPublicacionDTO;
 
 public class NotificationsFragment extends Fragment implements NotificacionInterfaz.View{
 
@@ -38,6 +44,11 @@ public class NotificationsFragment extends Fragment implements NotificacionInter
     public static final int CAMERA_PERMISSION_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
 
+    private static ConexionSQLHelper dbHelper;
+
+    private final ControladorNotificacion Controlador = new ControladorNotificacion(this);
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         //notificationsViewModel =
@@ -45,7 +56,8 @@ public class NotificationsFragment extends Fragment implements NotificacionInter
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        dbHelper = new ConexionSQLHelper(this.getContext());
+        Registrar();
         return root;
     }
 
@@ -69,7 +81,33 @@ public class NotificationsFragment extends Fragment implements NotificacionInter
     }
     /*----------------------Botón Guardar Producto--------------------*/
 
+    public void Registrar() {
+        binding.btnGuardarProducto.setOnClickListener(v -> {
+            FormularioPublicacionDTO form = getFormValues();
 
+            boolean isValid = Controlador.validarCampos(form);
+            if (isValid) {
+                boolean productCreated  = Controlador.guardarPublicacion(form, dbHelper);
+                /*Crear redireccion a la vista de productos*/
+                /*if (productCreated) {
+                    Intent newView = new Intent(this, login.class);
+                    startActivity(newView);
+                    finish();
+                }*/
+            }
+        });
+    }
+
+    private FormularioPublicacionDTO getFormValues() {
+        FormularioPublicacionDTO newForm = FormularioPublicacionDTO.getInstance();
+
+        newForm.setComentario(binding.comment.getText().toString());
+        newForm.setFechaVencimiento(binding.expirationDate.getText().toString());
+        newForm.setTipoAlimento(binding.type.getText().toString());
+        newForm.setNombreAlimento(binding.nombreProducto.getText().toString());
+
+        return newForm;
+    }
 
 
     /* ----------------- Servicio de la cámara -------------*/

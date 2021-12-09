@@ -2,10 +2,12 @@ package Controllers;
 
 import android.database.Cursor;
 
+import Contracts.UsersContracts;
 import Interfaces.LoginIterface;
 import Models.ConexionSQLHelper;
+import db.User;
 
-public class ControladorLogin implements LoginIterface.Controlador {
+public class ControladorLogin extends User implements LoginIterface.Controlador {
 
     private final LoginIterface.View view;
 
@@ -39,7 +41,10 @@ public class ControladorLogin implements LoginIterface.Controlador {
     @Override
     public Boolean usuarioPermitido(String usuario, String password, ConexionSQLHelper dbHelper) {
 
-        Cursor authorizedUser = dbHelper.getUser(usuario, password);
+        Cursor authorizedUser = getUser(usuario, password, dbHelper);
+        authorizedUser.moveToFirst();
+        int userIndex = authorizedUser.getColumnIndex(UsersContracts.UsersEntry.USER);
+        setCurrentIdUser(authorizedUser.getString(userIndex));
 
         view.usuarioAutorizado(authorizedUser.getCount() > 0);
         return authorizedUser.getCount() > 0;

@@ -10,17 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import Models.PublicacionesDTO;
 import Models.PublicacionesMostrar;
 
 public class AdapterAlimentos
         extends RecyclerView.Adapter<AdapterAlimentos.ViewHolderAlimentos>
         implements View.OnClickListener{
 
-    ArrayList<PublicacionesMostrar> listaAlimentos;
+    List<PublicacionesDTO> listaAlimentos;
     private View.OnClickListener listener;
 
-    public AdapterAlimentos(ArrayList<PublicacionesMostrar> listaAlimentos) {
+    public AdapterAlimentos(List<PublicacionesDTO> listaAlimentos) {
         this.listaAlimentos = listaAlimentos;
     }
 
@@ -38,7 +40,7 @@ public class AdapterAlimentos
     public void onBindViewHolder(@NonNull ViewHolderAlimentos holder, int position) {
         holder.nombreAlimen.setText(listaAlimentos.get(position).getNombre());
         holder.fechaVenc.setText(listaAlimentos.get(position).getFecha());
-        holder.fotoAlimento.setImageResource(listaAlimentos.get(position).getFoto());
+        holder.fotoAlimento.setImageResource(Integer.parseInt(listaAlimentos.get(position).getImage()));
     }
 
     @Override
@@ -63,9 +65,9 @@ public class AdapterAlimentos
 
         public ViewHolderAlimentos(@NonNull View itemView) {
             super(itemView);
-            nombreAlimen = (TextView) itemView.findViewById(R.id.nombreAlimento);
-            fechaVenc = (TextView) itemView.findViewById(R.id.fechaVencimiento);
-            fotoAlimento = (ImageView) itemView.findViewById(R.id.imagenAlimento);
+            nombreAlimen = itemView.findViewById(R.id.nombreAlimento);
+            fechaVenc = itemView.findViewById(R.id.fechaVencimiento);
+            fotoAlimento = itemView.findViewById(R.id.imagenAlimento);
         }
     }
 }

@@ -12,7 +12,7 @@ public interface FormularioInterfaz {
         void validarResultadoFormulario(String editText, String mensaje);
         void respuestaGuardadoUsuario(Boolean respuesta);
         void tomarFoto();
-
+        void respuestaUsuarioExistente(Boolean exists);
     }
 
     interface Controlador {

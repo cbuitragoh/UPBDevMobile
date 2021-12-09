@@ -1,9 +1,16 @@
 package Controllers;
 
-import Interfaces.NotificacionInterfaz;
-import Models.FormularioPublicacionDTO;
+import android.database.Cursor;
 
-public class ControladorNotificacion implements NotificacionInterfaz.Controlador {
+import Interfaces.NotificacionInterfaz;
+import Models.ConexionSQLHelper;
+import Models.FormularioPublicacionDTO;
+import Models.PublicacionesDTO;
+import Models.UsuarioDto;
+import db.Product;
+import db.User;
+
+public class ControladorNotificacion extends User implements NotificacionInterfaz.Controlador {
 
     private final NotificacionInterfaz.View view;
 
@@ -38,18 +45,27 @@ public class ControladorNotificacion implements NotificacionInterfaz.Controlador
     }
 
     @Override
-    public Boolean guardarPublicacion(FormularioPublicacionDTO formularioPublicacionDTO) {
+    public Boolean guardarPublicacion(FormularioPublicacionDTO formularioPublicacionDTO, ConexionSQLHelper dbHelper) {
         if (formularioPublicacionDTO != null) {
-            FormularioPublicacionDTO publicacionDTO = FormularioPublicacionDTO.getInstance();
-            publicacionDTO.setNombreAlimento(formularioPublicacionDTO.getNombreAlimento());
-            publicacionDTO.setFechaVencimiento(formularioPublicacionDTO.getFechaVencimiento());
-            publicacionDTO.setTipoAlimento(formularioPublicacionDTO.getTipoAlimento());
+            PublicacionesDTO publicacionDTO = new PublicacionesDTO();
+            publicacionDTO.setNombre(formularioPublicacionDTO.getNombreAlimento());
+            publicacionDTO.setFecha(formularioPublicacionDTO.getFechaVencimiento());
+            publicacionDTO.setTipo(formularioPublicacionDTO.getTipoAlimento());
             publicacionDTO.setComentario(formularioPublicacionDTO.getComentario());
-            view.respuestaGuardado(true);
-            return true;
+            publicacionDTO.setIdUser(getCurrentIdUser());
+
+            return saveProduct(publicacionDTO, dbHelper);
         }
         view.respuestaGuardado(false);
         return false;
+    }
+
+    public boolean saveProduct(PublicacionesDTO publicacion, ConexionSQLHelper dbHelper) {
+
+        long productSaved = Product.saveProduct(publicacion, dbHelper);
+        view.respuestaGuardado(productSaved > 0);
+        return productSaved > 0;
+
     }
 
 }

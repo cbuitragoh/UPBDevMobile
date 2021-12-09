@@ -20,13 +20,14 @@ public class login extends AppCompatActivity implements LoginIterface.View {
 
     private ActivityLoginBinding binding;
     private final ControladorLogin Controlador = new ControladorLogin(this);
-    private ConexionSQLHelper dbHelper;
+    private static ConexionSQLHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        dbHelper = new ConexionSQLHelper(getApplicationContext());
+        dbHelper = new ConexionSQLHelper(this.getApplicationContext());
         setContentView(view);
         Objects.requireNonNull(getSupportActionBar()).hide();
         Loguear();
@@ -86,6 +87,8 @@ public class login extends AppCompatActivity implements LoginIterface.View {
 
             }
         });
+
+
     }
 }
 

@@ -1,9 +1,12 @@
 package Controllers;
 
+import android.database.Cursor;
+
 import Interfaces.FormularioInterfaz;
 import Models.ConexionSQLHelper;
 import Models.FormularioDTO;
 import Models.UsuarioDto;
+import db.User;
 
 public class ControladorFormulario implements FormularioInterfaz.Controlador {
 
@@ -54,16 +57,22 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
             usuario.setCelular(formularioDTO.getEditCelular());
             usuario.setUsuario(formularioDTO.getEditUsuario());
             usuario.setPassword(formularioDTO.getEditPassword());
-            return saveUser(dbHelper, usuario);
+            return saveUser(usuario, dbHelper);
         } else {
             view.respuestaGuardadoUsuario(false);
             return false;
         }
     }
 
-    public boolean saveUser(ConexionSQLHelper db, UsuarioDto usuario) {
+    public boolean saveUser(UsuarioDto usuario, ConexionSQLHelper dbHelper) {
 
-        long userSaved = db.saveUser(usuario);
+        Cursor authorizedUser = User.getUser(usuario.getUsuario(), usuario.getPassword(), dbHelper);
+        if (authorizedUser.getCount() > 0 ) {
+            view.respuestaUsuarioExistente(true);
+            return false;
+        }
+
+        long userSaved = User.saveUser(usuario, dbHelper);
         view.respuestaGuardadoUsuario(userSaved > 0);
         return userSaved > 0;
 

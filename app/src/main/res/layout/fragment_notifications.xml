@@ -61,7 +61,7 @@
                     android:paddingTop="30dp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName2"
+                    android:id="@+id/expirationDate"
                     style="@style/vistaRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -70,7 +70,7 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                    android:id="@+id/type"
                     style="@style/vistaRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -79,7 +79,7 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName4"
+                    android:id="@+id/comment"
                     style="@style/vistaRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Models.ConexionSQLHelper;
 import Models.FormularioPublicacionDTO;
 
 public interface NotificacionInterfaz {
@@ -11,7 +12,7 @@ public interface NotificacionInterfaz {
 
     interface Controlador {
        Boolean validarCampos(FormularioPublicacionDTO formularioPublicacionDTO);
-       Boolean guardarPublicacion(FormularioPublicacionDTO formularioPublicacionDTO);
+       Boolean guardarPublicacion(FormularioPublicacionDTO formularioPublicacionDTO, ConexionSQLHelper dbHelper);
     }
 
     interface Modelo {

@@ -27,7 +27,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/fotoAlimento"
+                    android:id="@+id/editFotoAlimentoFormulario"
                     android:layout_width="148dp"
                     android:layout_height="110dp"
                     app:srcCompat="@drawable/logo_alimento" />
@@ -51,7 +51,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/nombreProducto"
+                    android:id="@+id/editNombreProducto"
                     style="@style/vistaRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -61,7 +61,7 @@
                     android:paddingTop="30dp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName2"
+                    android:id="@+id/editFechaVencimiento"
                     style="@style/vistaRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -70,7 +70,7 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                    android:id="@+id/editTipoProducto"
                     style="@style/vistaRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -79,7 +79,7 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName4"
+                    android:id="@+id/editDescripcionProducto"
                     style="@style/vistaRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

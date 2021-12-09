@@ -9,11 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Models.PublicacionesDTO;
-import Models.PublicacionesMostrar;
 
 public class AdapterAlimentos
         extends RecyclerView.Adapter<AdapterAlimentos.ViewHolderAlimentos>
@@ -41,8 +39,7 @@ public class AdapterAlimentos
         holder.nombreAlimen.setText(listaAlimentos.get(position).getNombre());
         holder.fechaVenc.setText(listaAlimentos.get(position).getFecha());
         holder.fotoAlimento.setImageResource(Integer.parseInt(listaAlimentos.get(position).getImage()));
-        holder.fotoAlimento.setImageResource(listaAlimentos.get(position).getFoto());
-        holder.estadoAlimento.setText(listaAlimentos.get(position).getEstado());
+        holder.estadoAlimento.setText(listaAlimentos.get(position).getEstado().toString());
 
     }
 
@@ -61,7 +58,7 @@ public class AdapterAlimentos
         }
     }
 
-    public class ViewHolderAlimentos extends RecyclerView.ViewHolder {
+    public static class ViewHolderAlimentos extends RecyclerView.ViewHolder {
 
         TextView nombreAlimen, fechaVenc, estadoAlimento;
         ImageView fotoAlimento;
@@ -71,10 +68,7 @@ public class AdapterAlimentos
             nombreAlimen = itemView.findViewById(R.id.nombreAlimento);
             fechaVenc = itemView.findViewById(R.id.fechaVencimiento);
             fotoAlimento = itemView.findViewById(R.id.imagenAlimento);
-            nombreAlimen = (TextView) itemView.findViewById(R.id.nombreAlimento);
-            fechaVenc = (TextView) itemView.findViewById(R.id.fechaVencimiento);
-            estadoAlimento = (TextView) itemView.findViewById(R.id.idEstadoProducto);
-            fotoAlimento = (ImageView) itemView.findViewById(R.id.imagenAlimento);
+            estadoAlimento = itemView.findViewById(R.id.idEstadoProducto);
         }
     }
 }

@@ -5,6 +5,7 @@
     tools:ignore="ExtraText">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -19,25 +20,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UPBDevMobile">
+
         <activity
             android:name=".NavigationMenu"
             android:exported="false"
             android:label="@string/title_activity_navigation_menu" />
-        <activity
-            android:name=".PublicarAlimento"
-            android:exported="false" />
-        <activity
-            android:name=".Publicaciones"
-            android:exported="false" />
+
         <activity
             android:name=".Detalle"
             android:exported="false" />
-        <activity
-            android:name=".Perfil"
-            android:exported="false" />
-        <activity
-            android:name=".Inicio"
-            android:exported="false" />
+
         <activity
             android:name=".InvitarAmigos"
             android:exported="false" />

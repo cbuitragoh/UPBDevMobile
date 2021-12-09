@@ -35,7 +35,7 @@ import Models.PublicacionesMostrar;
 
 public class HomeFragment extends Fragment implements InicioInterface.View{
 
-    Menu menu;
+
     private FragmentHomeBinding binding;
     public final ControladorInicio controlador = new ControladorInicio(this);
     private static ConexionSQLHelper dbHelper;
@@ -52,6 +52,26 @@ public class HomeFragment extends Fragment implements InicioInterface.View{
         controlador.recuperarLista(dbHelper);
         recyclerAlimentos= vista.findViewById(R.id.Recyclerid2);
         recyclerAlimentos.setLayoutManager(new GridLayoutManager(getContext(),2));
+
+        llenarLista();
+        AdapterAlimentos adapter = new AdapterAlimentos(listaAlimentos);
+
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent vistaDetalle = new Intent(getContext(), Detalle.class);
+
+                vistaDetalle.putExtra("nombre",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getNombre());
+                vistaDetalle.putExtra("fechaVencimiento",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getFecha());
+                //vistaDetalle.putExtra("estado",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getEstado());
+
+                startActivity(vistaDetalle);
+
+            }
+        });
+
+        recyclerAlimentos.setAdapter(adapter);
         return vista;
 
     }

@@ -4,7 +4,7 @@ import android.provider.BaseColumns;
 
 public class ProductContracts {
 
-    public static abstract class ProductEntry implements BaseColumns {
+    public static class ProductEntry implements BaseColumns {
         public static final String TABLE_NAME = "productos";
 
         public static final String NAME= "nombres";

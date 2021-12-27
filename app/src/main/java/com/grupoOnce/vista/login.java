@@ -27,7 +27,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        dbHelper = new ConexionSQLHelper(this.getApplicationContext());
+        dbHelper = new ConexionSQLHelper(login.this);
         setContentView(view);
         Objects.requireNonNull(getSupportActionBar()).hide();
         Loguear();
@@ -80,7 +80,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
             if(p & q) {
                Boolean j = Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
                 if (j){
-                    Intent newView = new Intent(this, NavigationMenu.class);
+                    Intent newView = new Intent(login.this, NavigationMenu.class);
                     startActivity(newView);
                     finish();
                 }

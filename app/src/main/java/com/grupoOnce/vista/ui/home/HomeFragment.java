@@ -39,9 +39,9 @@ public class HomeFragment extends Fragment implements InicioInterface.View{
 
         View vista = inflater.inflate(R.layout.fragment_home,container,false);
         dbHelper = new ConexionSQLHelper(this.getContext());
-        controlador.recuperarLista(dbHelper);
         recyclerAlimentos= vista.findViewById(R.id.Recyclerid2);
         recyclerAlimentos.setLayoutManager(new GridLayoutManager(getContext(),2));
+        controlador.recuperarLista(dbHelper);
 
         return vista;
 
@@ -66,6 +66,8 @@ public class HomeFragment extends Fragment implements InicioInterface.View{
             vistaDetalle.putExtra("nombre",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getNombre());
             vistaDetalle.putExtra("fechaVencimiento",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getFecha());
             vistaDetalle.putExtra("foto",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getImage());
+            vistaDetalle.putExtra("comentario",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getComentario());
+            vistaDetalle.putExtra("tipo",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getTipo());
 
             startActivity(vistaDetalle);
 

@@ -7,6 +7,7 @@ import Models.ConexionSQLHelper;
 import Models.FormularioPublicacionDTO;
 import Models.PublicacionesDTO;
 import Models.UsuarioDto;
+import Models.productState;
 import db.Product;
 import db.User;
 
@@ -52,7 +53,9 @@ public class ControladorNotificacion extends User implements NotificacionInterfa
             publicacionDTO.setFecha(formularioPublicacionDTO.getFechaVencimiento());
             publicacionDTO.setTipo(formularioPublicacionDTO.getTipoAlimento());
             publicacionDTO.setComentario(formularioPublicacionDTO.getComentario());
-            publicacionDTO.setIdUser(getCurrentIdUser());
+            //publicacionDTO.setIdUser(getCurrentIdUser());
+            publicacionDTO.setIdUser("1");
+            publicacionDTO.setEstado(productState.NUEVO);
 
             return saveProduct(publicacionDTO, dbHelper);
         }

@@ -34,7 +34,9 @@ public class ControladorInicio extends User implements InicioInterface.Controlad
             publicacionesDTOList.add(currentPublicacion);
         }
 
+        currentProducts.close();
         view.mostrarLista(publicacionesDTOList);
+
 
     }
 

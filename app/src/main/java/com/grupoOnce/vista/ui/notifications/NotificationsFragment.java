@@ -1,5 +1,7 @@
 package com.grupoOnce.vista.ui.notifications;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +12,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.grupoOnce.vista.NavigationMenu;
+import com.grupoOnce.vista.R;
 import com.grupoOnce.vista.databinding.FragmentNotificationsBinding;
+import com.grupoOnce.vista.ui.home.HomeFragment;
+
+import java.util.Objects;
 
 import Controllers.ControladorNotificacion;
 import Interfaces.NotificacionInterfaz;
@@ -20,7 +29,7 @@ import Models.ConexionSQLHelper;
 
 public class NotificationsFragment extends Fragment implements NotificacionInterfaz.View{
 
-    //private NotificationsViewModel notificationsViewModel;
+
     private FragmentNotificationsBinding binding;
 
     private ImageView selectedImage;
@@ -35,8 +44,6 @@ public class NotificationsFragment extends Fragment implements NotificacionInter
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        //notificationsViewModel =
-          //      new ViewModelProvider(this).get(NotificationsViewModel.class);
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -103,11 +110,11 @@ public class NotificationsFragment extends Fragment implements NotificacionInter
             if (isValid) {
                 boolean productCreated  = Controlador.guardarPublicacion(form, dbHelper);
                 /*Crear redireccion a la vista de productos*/
-                /*if (productCreated) {
-                    Intent newView = new Intent(this, login.class);
-                    startActivity(newView);
-                    finish();
-                }*/
+                if (productCreated) {
+                    Intent intent = new Intent(getContext(), NavigationMenu.class);
+                    startActivity(intent);
+                    requireActivity().finish();
+                }
             }
         });
     }

@@ -4,6 +4,8 @@ import android.provider.BaseColumns;
 
 public class UsersContracts {
 
+    private UsersContracts() {}
+
     public static class UsersEntry implements BaseColumns {
         public static final String TABLE_NAME = "usuarios";
 

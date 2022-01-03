@@ -1,7 +1,7 @@
 package com.grupoOnce.vista;
 
-//import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -27,7 +27,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        dbHelper = new ConexionSQLHelper(login.this);
+        dbHelper = new ConexionSQLHelper(this.getApplicationContext());
         setContentView(view);
         Objects.requireNonNull(getSupportActionBar()).hide();
         Loguear();
@@ -72,23 +72,55 @@ public class login extends AppCompatActivity implements LoginIterface.View {
             binding.editPassword.setError(null);
             binding.editPassword.clearFocus();
 
-            Boolean p;
-            Boolean q;
-            p = Controlador.validarLogin(binding.editUsuario.getText().toString(), "usuario");
-            q = Controlador.validarLogin(binding.editPassword.getText().toString(),"password");
+            boolean userSuccess;
+            boolean passwordSuccess;
+            userSuccess = Controlador.validarLogin(binding.editUsuario.getText().toString(), "usuario");
+            passwordSuccess = Controlador.validarLogin(binding.editPassword.getText().toString(),"password");
 
-            if(p & q) {
-               Boolean j = Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
-                if (j){
-                    Intent newView = new Intent(login.this, NavigationMenu.class);
+            if(userSuccess & passwordSuccess) {
+                boolean passUser;
+                passUser = Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
+                if (passUser){
+                    Intent newView = new Intent(this, NavigationMenu.class);
                     startActivity(newView);
                     finish();
                 }
 
             }
+
         });
 
 
+
+
+
+
     }
+
+    /*class task extends AsyncTask<String, Void, String>{
+        @Override
+        protected void onPreExecute(){
+            binding.progressBar1.setVisibility(View.VISIBLE);
+            binding.btnIngresar.setEnabled(false);
+        }
+        @Override
+        protected String doInBackground(String... strings){
+            try{
+                Thread.sleep(3000);
+
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+            return strings[0];
+        }
+        @Override
+        protected void onPostExecute(String s){
+            binding.progressBar1.setVisibility(View.INVISIBLE);
+            binding.btnIngresar.setEnabled(true);
+            Intent intent = new Intent(login.this, NavigationMenu.class);
+            startActivity(intent);
+        }
+
+    }*/
 }
 

@@ -2,6 +2,7 @@ package db;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 
 import Contracts.UsersContracts.UsersEntry;
 import Models.ConexionSQLHelper;
@@ -13,7 +14,7 @@ public class User {
 
     public static void createUserTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + UsersEntry.TABLE_NAME + "("
-                + UsersEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + UsersEntry._ID + " INTEGER PRIMARY KEY, "
                 + UsersEntry.NAME + " TEXT NOT NULL, "
                 + UsersEntry.LASTNAME + " TEXT NOT NULL,"
                 + UsersEntry.GENDER + " TEXT NOT NULL,"
@@ -32,8 +33,26 @@ public class User {
 
     public static Cursor getUser(String usuario, String password, ConexionSQLHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getReadableDb();
-        String query = "Select * FROM " + UsersEntry.TABLE_NAME + " WHERE " + UsersEntry.USER + " = ? AND " + UsersEntry.PASSWORD + " =  ?";
-        return db.rawQuery(query, new String[]{usuario, password});
+
+        String [] projection = {
+            UsersEntry._ID,
+            UsersEntry.USER,
+            UsersEntry.PASSWORD
+        };
+
+        String selection = UsersEntry.USER + " = ?" + " AND "+ UsersEntry.PASSWORD + " = ?";
+        String[] selectionArgs = {usuario, password};
+
+        return db.query(
+            UsersEntry.TABLE_NAME,
+            projection,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        );
+
     }
 
 

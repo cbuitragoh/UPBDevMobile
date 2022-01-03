@@ -3,7 +3,11 @@ package db;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import javax.xml.namespace.QName;
+
+import Contracts.ProductContracts;
 import Contracts.ProductContracts.ProductEntry;
+import Contracts.UsersContracts;
 import Models.ConexionSQLHelper;
 import Models.PublicacionesDTO;
 
@@ -34,7 +38,31 @@ public class Product {
 
     public static Cursor getProducts(ConexionSQLHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getReadableDb();
-        String query = "Select * FROM " + ProductEntry.TABLE_NAME ;
-        return db.rawQuery(query, new String[]{});
+
+        String [] projection = {
+                ProductEntry.NAME,
+                ProductEntry.EXPIREDDATE,
+                ProductEntry.STATE,
+                ProductEntry.TYPE,
+                ProductEntry.COMMENT
+        };
+
+
+        return db.query(
+                ProductEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
+    public static int deleteProducts(PublicacionesDTO producto, ConexionSQLHelper dbHelper){
+        SQLiteDatabase db = dbHelper.getWritableDb();
+        String [] args = new String[]{producto.getNombre()};
+        return db.delete(ProductEntry.TABLE_NAME, ProductEntry.NAME+ " = ?",args);
+
     }
 }

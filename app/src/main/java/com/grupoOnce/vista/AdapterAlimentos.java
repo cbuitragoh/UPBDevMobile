@@ -38,7 +38,7 @@ public class AdapterAlimentos
     public void onBindViewHolder(@NonNull ViewHolderAlimentos holder, int position) {
         holder.nombreAlimen.setText(listaAlimentos.get(position).getNombre());
         holder.fechaVenc.setText(listaAlimentos.get(position).getFecha());
-        holder.fotoAlimento.setImageResource(Integer.parseInt(listaAlimentos.get(position).getImage()));
+        //holder.fotoAlimento.setImageResource(Integer.parseInt(listaAlimentos.get(position).getImage()));
         holder.estadoAlimento.setText(listaAlimentos.get(position).getEstado().toString());
 
     }

@@ -1,5 +1,8 @@
 package Models;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+
 public class FormularioDTO {
 
     private String editNombres;
@@ -11,11 +14,10 @@ public class FormularioDTO {
     private String editUsuario;
     private String editPassword;
     private String spSexo;
+    private Drawable editFoto;
 
-    public FormularioDTO() {
-    }
 
-    public FormularioDTO(String editNombres, String editApellidos, String editDireccion, String editCorreo, String editCiudad, String editCelular, String editUsuario, String editPassword, String spSexo) {
+    public FormularioDTO(String editNombres, String editApellidos, String editDireccion, String editCorreo, String editCiudad, String editCelular, String editUsuario, String editPassword, String spSexo, Drawable editFoto) {
         this.editNombres = editNombres;
         this.editApellidos = editApellidos;
         this.editDireccion = editDireccion;
@@ -25,6 +27,7 @@ public class FormularioDTO {
         this.editUsuario = editUsuario;
         this.editPassword = editPassword;
         this.spSexo = spSexo;
+        this.editFoto = editFoto;
     }
 
     public String getEditNombres() {
@@ -97,5 +100,13 @@ public class FormularioDTO {
 
     public void setSpSexo(String spSexo) {
         this.spSexo = spSexo;
+    }
+
+    public Drawable getEditFoto() {
+        return editFoto;
+    }
+
+    public void setEditFoto(Drawable editFoto) {
+        this.editFoto = editFoto;
     }
 }

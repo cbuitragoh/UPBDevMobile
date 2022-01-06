@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment implements InicioInterface.View{
             vistaDetalle.putExtra("comentario",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getComentario());
             vistaDetalle.putExtra("tipo",listaAlimentos.get(recyclerAlimentos.getChildAdapterPosition(v)).getTipo());
 
+
             startActivity(vistaDetalle);
 
         });

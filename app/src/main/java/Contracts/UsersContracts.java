@@ -9,6 +9,7 @@ public class UsersContracts {
     public static class UsersEntry implements BaseColumns {
         public static final String TABLE_NAME = "usuarios";
 
+        public static final String PHOTO= "foto";
         public static final String NAME= "nombres";
         public static final String LASTNAME= "apellidos";
         public static final String GENDER= "sexo";

@@ -57,6 +57,7 @@ public class ControladorFormulario implements FormularioInterfaz.Controlador {
             usuario.setCelular(formularioDTO.getEditCelular());
             usuario.setUsuario(formularioDTO.getEditUsuario());
             usuario.setPassword(formularioDTO.getEditPassword());
+            usuario.setFoto(User.getBitmatAsByteArray(formularioDTO.getEditFoto()));
             return saveUser(usuario, dbHelper);
         } else {
             view.respuestaGuardadoUsuario(false);

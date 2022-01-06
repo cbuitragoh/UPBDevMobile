@@ -11,27 +11,69 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.grupoOnce.vista.AdapterAlimentos;
 import com.grupoOnce.vista.R;
 import com.grupoOnce.vista.databinding.FragmentDashboardBinding;
 
-public class DashboardFragment extends Fragment {
+import java.util.List;
+
+import Controllers.ControladorInicio;
+import Controllers.ControladorPerfil;
+import Interfaces.InicioInterface;
+import Interfaces.PerfilInterfaz;
+import Models.ConexionSQLHelper;
+import Models.PublicacionesDTO;
+
+public class DashboardFragment extends Fragment implements PerfilInterfaz.View {
 
     private FragmentDashboardBinding binding;
+    public ControladorPerfil controlador = new ControladorPerfil(this);
+    private static ConexionSQLHelper dbHelper;
+
+
+    RecyclerView recyclerAlimPerfil;
+    List<PublicacionesDTO> listaAlimentos;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        View vista = inflater.inflate(R.layout.fragment_dashboard,container,false);
+        dbHelper = new ConexionSQLHelper(this.getContext());
+        recyclerAlimPerfil= vista.findViewById(R.id.recyclerPerfil);
+        recyclerAlimPerfil.setLayoutManager(new GridLayoutManager(getContext(),2));
+        controlador.recuperarLista(dbHelper);
 
-        return root;
+        return vista;
+
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void mostrarLista(List<PublicacionesDTO> publicacionesDTOList) {
+
+        this.listaAlimentos = publicacionesDTOList;
+
+        AdapterAlimentos adapter = new AdapterAlimentos(this.listaAlimentos);
+        recyclerAlimPerfil.setAdapter(adapter);
+
+    }
+
+    @Override
+    public void mostrarUsuario() {
+
+    }
+
+    @Override
+    public void respuestaSalirApp() {
+
     }
 }

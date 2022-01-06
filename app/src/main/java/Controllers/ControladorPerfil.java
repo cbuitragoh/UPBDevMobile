@@ -1,6 +1,5 @@
 package Controllers;
 
-
 import android.database.Cursor;
 
 import java.util.ArrayList;
@@ -8,23 +7,23 @@ import java.util.List;
 
 import Contracts.ProductContracts;
 import Interfaces.InicioInterface;
+import Interfaces.PerfilInterfaz;
 import Models.ConexionSQLHelper;
 import Models.PublicacionesDTO;
+import Models.UsuarioDto;
 import Models.productState;
 import db.Product;
 import db.User;
 
-public class ControladorInicio extends User implements InicioInterface.Controlador {
+public class ControladorPerfil implements PerfilInterfaz.Controlador {
 
-    private final InicioInterface.View view;
+    private final PerfilInterfaz.View view;
 
-    public ControladorInicio(InicioInterface.View view) {
-        this.view = view;
-    }
+    public ControladorPerfil(PerfilInterfaz.View view) { this.view = view; }
+
 
     @Override
     public void recuperarLista(ConexionSQLHelper dbHelper) {
-
         List<PublicacionesDTO> publicacionesDTOList = new ArrayList<>();
 
         Cursor currentProducts = Product.getProducts(dbHelper);
@@ -36,14 +35,18 @@ public class ControladorInicio extends User implements InicioInterface.Controlad
 
         currentProducts.close();
         view.mostrarLista(publicacionesDTOList);
-
-
     }
 
     @Override
-    public void salirApp() {
-        view.respuestaSalirApp();
+    public void recuperarUsuario(ConexionSQLHelper dbHelper) {
+        UsuarioDto user = new UsuarioDto();
+
+        Cursor currentUser = User.getUserPerfil(dbHelper);
     }
+
+
+    @Override
+    public void salirApp() { view.respuestaSalirApp(); }
 
     private PublicacionesDTO handleCursorData(Cursor publicacion) {
         PublicacionesDTO publicacionNew = new PublicacionesDTO();
@@ -57,7 +60,4 @@ public class ControladorInicio extends User implements InicioInterface.Controlad
 
         return publicacionNew;
     }
-
-
 }
-

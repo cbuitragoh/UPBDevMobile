@@ -23,6 +23,7 @@ import Interfaces.DetalleInterfaz;
 import Models.ConexionSQLHelper;
 import Models.FormularioPublicacionDTO;
 import Models.PublicacionesDTO;
+import db.Product;
 
 
 public class Detalle extends AppCompatActivity implements DetalleInterfaz.View {
@@ -52,6 +53,7 @@ public class Detalle extends AppCompatActivity implements DetalleInterfaz.View {
         binding.textBoxFv.setText(getIntent().getExtras().getString("fechaVencimiento"));
         binding.textBoxProduct.setText(getIntent().getExtras().getString("tipo"));
         binding.textBoxDescripcion.setText(getIntent().getExtras().getString("comentario"));
+        binding.editFotoAlimento.setImageBitmap(Product.convertByteArrayToBitmap(getIntent().getExtras().getByteArray("foto")));
     }
 
     @Override

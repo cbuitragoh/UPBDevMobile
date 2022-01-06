@@ -1,8 +1,10 @@
 package Models;
 
+import android.graphics.drawable.Drawable;
+
 public class FormularioPublicacionDTO {
     private String nombreAlimento;
-    private String fotoAlimento;
+    private Drawable fotoAlimento;
     private String fechaVencimiento;
     private String tipoAlimento;
     private String comentario;
@@ -26,11 +28,11 @@ public class FormularioPublicacionDTO {
         this.nombreAlimento = nombreAlimento;
     }
 
-    public String getFotoAlimento() {
+    public Drawable getFotoAlimento() {
         return fotoAlimento;
     }
 
-    public void setFotoAlimento(String fotoAlimento) {
+    public void setFotoAlimento(Drawable fotoAlimento) {
         this.fotoAlimento = fotoAlimento;
     }
 

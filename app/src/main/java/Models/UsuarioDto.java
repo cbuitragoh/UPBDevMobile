@@ -1,6 +1,7 @@
 package Models;
 
 import android.content.ContentValues;
+import android.widget.ImageView;
 
 import Contracts.UsersContracts;
 
@@ -11,7 +12,7 @@ public class UsuarioDto {
     private String sexo;
     private String direccion;
     private String correo;
-    private String foto;
+    private byte[] foto;
     private String ciudad;
     private String celular;
     private String usuario;
@@ -21,6 +22,7 @@ public class UsuarioDto {
 
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
+        values.put(UsersContracts.UsersEntry.PHOTO, foto);
         values.put(UsersContracts.UsersEntry.NAME, nombre);
         values.put(UsersContracts.UsersEntry.LASTNAME, apellido);
         values.put(UsersContracts.UsersEntry.GENDER, sexo);
@@ -73,11 +75,11 @@ public class UsuarioDto {
         this.correo = correo;
     }
 
-    public String getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 

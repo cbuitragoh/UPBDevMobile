@@ -125,7 +125,7 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
     }
 
     private FormularioDTO getFormValues() {
-        return new FormularioDTO(
+         FormularioDTO formulario = new FormularioDTO(
                 binding.editNombres.getText().toString(),
                 binding.editApellidos.getText().toString(),
                 binding.editDireccion.getText().toString(),
@@ -134,7 +134,10 @@ public class Registro extends AppCompatActivity implements FormularioInterfaz.Vi
                 binding.editCelular.getText().toString(),
                 binding.editUsuario.getText().toString(),
                 binding.editPassword.getText().toString(),
-                binding.spSexo.getSelectedItem().toString());
+                binding.spSexo.getSelectedItem().toString(),
+                binding.editFoto.getDrawable());
+
+        return formulario;
 
     }
 

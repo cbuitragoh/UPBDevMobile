@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import Models.PublicacionesDTO;
+import db.Product;
 
 public class AdapterAlimentos
         extends RecyclerView.Adapter<AdapterAlimentos.ViewHolderAlimentos>
@@ -38,7 +39,7 @@ public class AdapterAlimentos
     public void onBindViewHolder(@NonNull ViewHolderAlimentos holder, int position) {
         holder.nombreAlimen.setText(listaAlimentos.get(position).getNombre());
         holder.fechaVenc.setText(listaAlimentos.get(position).getFecha());
-        //holder.fotoAlimento.setImageResource(Integer.parseInt(listaAlimentos.get(position).getImage()));
+        holder.fotoAlimento.setImageBitmap(Product.convertByteArrayToBitmap((listaAlimentos.get(position).getImage())));
         holder.estadoAlimento.setText(listaAlimentos.get(position).getEstado().toString());
 
     }

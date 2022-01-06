@@ -12,7 +12,7 @@ public class PublicacionesDTO {
     private String nombre;
     private String tipo;
     private productState estado;
-    private String image;
+    private byte[] image;
 
     public PublicacionesDTO() { }
 
@@ -27,6 +27,7 @@ public class PublicacionesDTO {
 
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
+        values.put(ProductContracts.ProductEntry.IMAGE, image);
         values.put(ProductContracts.ProductEntry.NAME, nombre);
         values.put(ProductContracts.ProductEntry.TYPE, tipo);
         values.put(ProductContracts.ProductEntry.EXPIREDDATE, fecha);
@@ -36,11 +37,11 @@ public class PublicacionesDTO {
         return values;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

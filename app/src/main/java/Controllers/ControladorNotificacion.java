@@ -49,6 +49,7 @@ public class ControladorNotificacion extends User implements NotificacionInterfa
     public Boolean guardarPublicacion(FormularioPublicacionDTO formularioPublicacionDTO, ConexionSQLHelper dbHelper) {
         if (formularioPublicacionDTO != null) {
             PublicacionesDTO publicacionDTO = new PublicacionesDTO();
+            publicacionDTO.setImage(Product.getBitmatAsByteArray(formularioPublicacionDTO.getFotoAlimento()));
             publicacionDTO.setNombre(formularioPublicacionDTO.getNombreAlimento());
             publicacionDTO.setFecha(formularioPublicacionDTO.getFechaVencimiento());
             publicacionDTO.setTipo(formularioPublicacionDTO.getTipoAlimento());

@@ -2,7 +2,12 @@ package db;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.provider.BaseColumns;
+
+import java.io.ByteArrayOutputStream;
 
 import Contracts.UsersContracts.UsersEntry;
 import Models.ConexionSQLHelper;
@@ -15,6 +20,7 @@ public class User {
     public static void createUserTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + UsersEntry.TABLE_NAME + "("
                 + UsersEntry._ID + " INTEGER PRIMARY KEY, "
+                + UsersEntry.PHOTO + " BLOB NOT NULL, "
                 + UsersEntry.NAME + " TEXT NOT NULL, "
                 + UsersEntry.LASTNAME + " TEXT NOT NULL,"
                 + UsersEntry.GENDER + " TEXT NOT NULL,"
@@ -29,6 +35,14 @@ public class User {
     public static long saveUser(UsuarioDto usuario, ConexionSQLHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getWritableDb();
         return db.insert(UsersEntry.TABLE_NAME, null, usuario.toContentValues());
+    }
+
+    public static byte[] getBitmatAsByteArray(Drawable drawable){
+        BitmapDrawable bitDw = (BitmapDrawable) drawable;
+        Bitmap bitmap = bitDw.getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        return stream.toByteArray();
     }
 
     public static Cursor getUser(String usuario, String password, ConexionSQLHelper dbHelper) {
@@ -53,6 +67,28 @@ public class User {
             null
         );
 
+    }
+
+    public static Cursor getUserPerfil(ConexionSQLHelper dbHelper) {
+        SQLiteDatabase db = dbHelper.getReadableDb();
+
+        String [] projection = {
+                UsersEntry.NAME,
+                UsersEntry.PHOTO
+
+        };
+
+
+
+        return db.query(
+                UsersEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
     }
 
 

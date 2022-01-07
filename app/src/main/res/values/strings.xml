@@ -25,7 +25,7 @@
     <string name="invitar_amigos">Invitar Amigos</string>
     <string name="invitacion">¿Quieres invitar a tus amigos?</string>
     <string name="exito">Ha sido todo un éxito</string>
-    <string name="usuario_invita">Nombre Usuario, tu producto</string>
+    <string name="usuario_invita">Tu exquisito producto:</string>
     <string name="estado_producto">Estado Producto</string>
     <string name="mis_publicaciones">Mis Publicaciones</string>
 </resources>

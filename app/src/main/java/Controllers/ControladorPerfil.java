@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Contracts.ProductContracts;
+import Contracts.UsersContracts;
 import Interfaces.InicioInterface;
 import Interfaces.PerfilInterfaz;
 import Models.ConexionSQLHelper;
@@ -26,7 +27,7 @@ public class ControladorPerfil implements PerfilInterfaz.Controlador {
     public void recuperarLista(ConexionSQLHelper dbHelper) {
         List<PublicacionesDTO> publicacionesDTOList = new ArrayList<>();
 
-        Cursor currentProducts = Product.getProducts(dbHelper);
+        Cursor currentProducts = Product.getProductsByUser(view.getIdUserCurrent(), dbHelper);
 
         while (currentProducts.moveToNext()) {
             PublicacionesDTO currentPublicacion = handleCursorData(currentProducts);
@@ -39,14 +40,20 @@ public class ControladorPerfil implements PerfilInterfaz.Controlador {
 
     @Override
     public void recuperarUsuario(ConexionSQLHelper dbHelper) {
-        UsuarioDto user = new UsuarioDto();
+        UsuarioDto user = UsuarioDto.getInstance();
 
-        Cursor currentUser = User.getUserPerfil(dbHelper);
+        Cursor currentUser = User.getUserPerfil(view.getIdUserCurrent(),dbHelper);
+
+        currentUser.moveToFirst();
+
+        user.setNombre(currentUser.getString((int) currentUser.getColumnIndex(UsersContracts.UsersEntry.NAME)));
+        user.setFoto(currentUser.getBlob((int) currentUser.getColumnIndex(UsersContracts.UsersEntry.PHOTO)));
+
+        currentUser.close();
+        view.mostrarUsuario(user);
     }
 
 
-    @Override
-    public void salirApp() { view.respuestaSalirApp(); }
 
     private PublicacionesDTO handleCursorData(Cursor publicacion) {
         PublicacionesDTO publicacionNew = new PublicacionesDTO();
@@ -60,4 +67,6 @@ public class ControladorPerfil implements PerfilInterfaz.Controlador {
 
         return publicacionNew;
     }
+
+
 }

@@ -1,9 +1,12 @@
 package com.grupoOnce.vista.ui.dashboard;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +29,8 @@ import Interfaces.InicioInterface;
 import Interfaces.PerfilInterfaz;
 import Models.ConexionSQLHelper;
 import Models.PublicacionesDTO;
+import Models.UsuarioDto;
+import db.Product;
 
 public class DashboardFragment extends Fragment implements PerfilInterfaz.View {
 
@@ -35,6 +40,8 @@ public class DashboardFragment extends Fragment implements PerfilInterfaz.View {
 
 
     RecyclerView recyclerAlimPerfil;
+    ImageView imagePerfil;
+    TextView nombreUsuario;
     List<PublicacionesDTO> listaAlimentos;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -45,7 +52,13 @@ public class DashboardFragment extends Fragment implements PerfilInterfaz.View {
         dbHelper = new ConexionSQLHelper(this.getContext());
         recyclerAlimPerfil= vista.findViewById(R.id.recyclerPerfil);
         recyclerAlimPerfil.setLayoutManager(new GridLayoutManager(getContext(),2));
+
         controlador.recuperarLista(dbHelper);
+
+        imagePerfil = vista.findViewById(R.id.idImagePerfil);
+        nombreUsuario = vista.findViewById(R.id.idNameUserPerfil);
+
+        controlador.recuperarUsuario(dbHelper);
 
         return vista;
 
@@ -68,12 +81,15 @@ public class DashboardFragment extends Fragment implements PerfilInterfaz.View {
     }
 
     @Override
-    public void mostrarUsuario() {
-
+    public void mostrarUsuario(UsuarioDto usuario) {
+        imagePerfil.setImageBitmap(Product.convertByteArrayToBitmap(usuario.getFoto()));
+        nombreUsuario.setText(usuario.getNombre());
     }
 
     @Override
-    public void respuestaSalirApp() {
-
+    public String getIdUserCurrent() {
+        SharedPreferences sharedPref = requireContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+        return sharedPref.getString("currentIdUser","Usuario Actual");
     }
+
 }

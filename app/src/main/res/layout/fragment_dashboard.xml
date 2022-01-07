@@ -13,10 +13,11 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="1dp"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,19 +31,24 @@
             android:src="@drawable/usuario" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/idNameUserPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
+            android:fontFamily="@font/mate_sc"
             android:gravity="center"
-            android:hint="@string/usuario" />
+            android:hint="@string/usuario"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout6"
-        android:layout_width="411dp"
-        android:layout_height="544dp"
+        android:layout_width="412dp"
+        android:layout_height="443dp"
         android:layout_marginBottom="7dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,9 +56,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
+        <TextView
+            android:id="@+id/idMisPublicaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/mate_sc"
+            android:gravity="center_horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/mis_publicaciones"
+            android:textSize="20sp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerPerfil"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

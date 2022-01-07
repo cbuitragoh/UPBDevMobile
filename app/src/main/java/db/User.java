@@ -69,22 +69,22 @@ public class User {
 
     }
 
-    public static Cursor getUserPerfil(ConexionSQLHelper dbHelper) {
+    public static Cursor getUserPerfil(String idUser, ConexionSQLHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getReadableDb();
 
         String [] projection = {
                 UsersEntry.NAME,
                 UsersEntry.PHOTO
-
         };
 
-
+        String selection = UsersEntry._ID + " = ?";
+        String[] selectionArgs = {idUser};
 
         return db.query(
                 UsersEntry.TABLE_NAME,
                 projection,
-                null,
-                null,
+                selection,
+                selectionArgs,
                 null,
                 null,
                 null
@@ -99,4 +99,6 @@ public class User {
     public void setCurrentIdUser(String currentIdUser) {
         this.currentIdUser = currentIdUser;
     }
+
+
 }

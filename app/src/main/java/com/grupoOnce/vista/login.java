@@ -1,7 +1,8 @@
 package com.grupoOnce.vista;
 
+import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ public class login extends AppCompatActivity implements LoginIterface.View {
         dbHelper = new ConexionSQLHelper(this.getApplicationContext());
         setContentView(view);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
         Loguear();
 
     }
@@ -80,6 +82,12 @@ public class login extends AppCompatActivity implements LoginIterface.View {
             if(userSuccess & passwordSuccess) {
                 boolean passUser;
                 passUser = Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
+
+                SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("data",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("currentIdUser", Controlador.getCurrentIdUser());
+                editor.apply();
+
                 if (passUser){
                     Intent newView = new Intent(this, NavigationMenu.class);
                     startActivity(newView);
@@ -97,30 +105,5 @@ public class login extends AppCompatActivity implements LoginIterface.View {
 
     }
 
-    /*class task extends AsyncTask<String, Void, String>{
-        @Override
-        protected void onPreExecute(){
-            binding.progressBar1.setVisibility(View.VISIBLE);
-            binding.btnIngresar.setEnabled(false);
-        }
-        @Override
-        protected String doInBackground(String... strings){
-            try{
-                Thread.sleep(3000);
-
-            }catch(InterruptedException e){
-                e.printStackTrace();
-            }
-            return strings[0];
-        }
-        @Override
-        protected void onPostExecute(String s){
-            binding.progressBar1.setVisibility(View.INVISIBLE);
-            binding.btnIngresar.setEnabled(true);
-            Intent intent = new Intent(login.this, NavigationMenu.class);
-            startActivity(intent);
-        }
-
-    }*/
 }
 

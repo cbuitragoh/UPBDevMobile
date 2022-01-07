@@ -2,7 +2,9 @@ package com.grupoOnce.vista.ui.notifications;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -108,6 +110,13 @@ public class NotificationsFragment extends Fragment implements NotificacionInter
         String message = respuesta ? "Alimento Guardado" : "Alimento no guardado";
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public String getIdUserCurrent(){
+        SharedPreferences sharedPref = requireContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+        return sharedPref.getString("currentIdUser","Usuario Actual");
+    }
+
     /*----------------------Botón Guardar Producto--------------------*/
 
     public void Registrar() {
@@ -138,6 +147,8 @@ public class NotificationsFragment extends Fragment implements NotificacionInter
 
         return newForm;
     }
+
+
 
 
     /* ----------------- Servicio de la cámara -------------*/

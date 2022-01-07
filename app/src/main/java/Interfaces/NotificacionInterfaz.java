@@ -8,6 +8,7 @@ public interface NotificacionInterfaz {
     interface View {
         void respuestaValidacion(String indicador, String mensaje);
         void respuestaGuardado(Boolean respuesta);
+        String getIdUserCurrent();
     }
 
     interface Controlador {

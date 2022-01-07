@@ -43,8 +43,9 @@ public class ControladorLogin extends User implements LoginIterface.Controlador 
 
         Cursor authorizedUser = getUser(usuario, password, dbHelper);
         authorizedUser.moveToFirst();
-        //int userIndex = authorizedUser.getColumnIndex(UsersContracts.UsersEntry.USER);
-        //setCurrentIdUser(authorizedUser.getString(userIndex));
+        int userIndex = authorizedUser.getColumnIndex(UsersContracts.UsersEntry._ID);
+        setCurrentIdUser(authorizedUser.getString(userIndex));
+
         boolean userAutho = (authorizedUser.getCount() > 0);
         view.usuarioAutorizado(userAutho);
         authorizedUser.close();

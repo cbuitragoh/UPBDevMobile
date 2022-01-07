@@ -65,12 +65,15 @@ public class Product {
                 ProductEntry.IMAGE
         };
 
+        String selection = ProductEntry.USERID + " = ?";
+        String[] selectionArgs = {idUser};
+
 
         return db.query(
                 ProductEntry.TABLE_NAME,
                 projection,
-                null,
-                null,
+                selection,
+                selectionArgs,
                 null,
                 null,
                 null

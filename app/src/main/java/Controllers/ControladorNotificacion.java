@@ -54,8 +54,7 @@ public class ControladorNotificacion extends User implements NotificacionInterfa
             publicacionDTO.setFecha(formularioPublicacionDTO.getFechaVencimiento());
             publicacionDTO.setTipo(formularioPublicacionDTO.getTipoAlimento());
             publicacionDTO.setComentario(formularioPublicacionDTO.getComentario());
-            //publicacionDTO.setIdUser(getCurrentIdUser());
-            publicacionDTO.setIdUser("1");
+            publicacionDTO.setIdUser(view.getIdUserCurrent());
             publicacionDTO.setEstado(productState.NUEVO);
 
             return saveProduct(publicacionDTO, dbHelper);

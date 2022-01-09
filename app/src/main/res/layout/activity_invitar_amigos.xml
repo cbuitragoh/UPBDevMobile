@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout9"
-        android:layout_width="406dp"
-        android:layout_height="725dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#FFFFFF"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,14 +19,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="139dp"
+            android:layout_height="137dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="137dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
@@ -38,7 +38,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="352dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -103,7 +103,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
             android:gravity="center"
             android:orientation="vertical">
@@ -129,17 +129,25 @@
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/flecha" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
             <Button
                 android:id="@+id/btnInvitarAmigos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginBottom="0dp"
                 android:background="#B3BB21"
                 android:text="@string/invitar_amigos"
                 android:textColor="#FFFFFF"
                 tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
-
         </LinearLayout>
 
     </LinearLayout>

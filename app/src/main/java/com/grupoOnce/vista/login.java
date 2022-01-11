@@ -83,12 +83,12 @@ public class login extends AppCompatActivity implements LoginIterface.View {
                 boolean passUser;
                 passUser = Controlador.usuarioPermitido(binding.editUsuario.getText().toString(), binding.editPassword.getText().toString(), dbHelper);
 
-                SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("data",Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("currentIdUser", Controlador.getCurrentIdUser());
-                editor.apply();
-
                 if (passUser){
+                    SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("data",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("currentIdUser", Controlador.getCurrentIdUser());
+                    editor.apply();
+
                     Intent newView = new Intent(this, NavigationMenu.class);
                     startActivity(newView);
                     finish();

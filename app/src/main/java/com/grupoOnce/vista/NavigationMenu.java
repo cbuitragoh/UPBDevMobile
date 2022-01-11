@@ -71,7 +71,7 @@ public class NavigationMenu extends AppCompatActivity {
         }
         else if (id == R.id.menu_salir){
             AlertDialog.Builder builder = new AlertDialog.Builder(NavigationMenu.this);
-            builder.setMessage("¿Realemte desea salir?");
+            builder.setMessage("¿Realmente desea salir?");
             builder.setCancelable(true);
 
             builder.setNegativeButton("YES", new DialogInterface.OnClickListener() {

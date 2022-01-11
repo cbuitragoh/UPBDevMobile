@@ -72,7 +72,7 @@ public class InvitarAmigos extends AppCompatActivity implements InvitarAmigosInt
         }
         else if (id == R.id.menu_salir){
             AlertDialog.Builder builder = new AlertDialog.Builder(InvitarAmigos.this);
-            builder.setMessage("¿Realemente desea Salir?");
+            builder.setMessage("¿Realmente desea Salir?");
             builder.setCancelable(true);
 
             builder.setNegativeButton("YES", new DialogInterface.OnClickListener() {

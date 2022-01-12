@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.grupoOnce.vista.databinding.ActivityDetalleBinding;
 import com.grupoOnce.vista.databinding.FragmentHomeBinding;
 import com.grupoOnce.vista.ui.home.HomeFragment;
@@ -31,6 +33,7 @@ public class Detalle extends AppCompatActivity implements DetalleInterfaz.View {
     private ActivityDetalleBinding binding;
     private final ControladorDetalle Controlador = new ControladorDetalle(this);
     private static ConexionSQLHelper dbHelper;
+    private FusedLocationProviderClient fusedLocationClient;
 
 
     @Override
@@ -41,6 +44,8 @@ public class Detalle extends AppCompatActivity implements DetalleInterfaz.View {
         setContentView(view);
         Objects.requireNonNull(getSupportActionBar()).hide();
         dbHelper = new ConexionSQLHelper(this);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
 
         mostrarPublicaciones();
         Eliminar();
